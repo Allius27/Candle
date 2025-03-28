@@ -6,6 +6,7 @@
 
 #include <QMainWindow>
 #include <QtSerialPort/QSerialPort>
+#include <QtSerialPort/QSerialPortInfo>
 #include <QSettings>
 #include <QTimer>
 #include <QBasicTimer>
@@ -56,7 +57,16 @@ struct CommandAttributes {
     QString command;
 };
 
+enum controllerType
+{
+    GRBL_CNC,
+    DOSER_CNC
+};
+
 struct CommandQueue {
+
+    controllerType cnc_type;
+
     QString command;
     int tableIndex;
     bool showInConsole;
@@ -90,7 +100,8 @@ private slots:
     void placeVisualizerButtons();
 
     void onSerialPortReadyRead();
-    void onSerialPortError(QSerialPort::SerialPortError);
+    void onSerialPortCNCError(QSerialPort::SerialPortError);
+    void onSerialPortDoserError(QSerialPort::SerialPortError);
     void onTimerConnection();
     void onTimerStateQuery();
     void onVisualizatorRotationChanged();
@@ -193,6 +204,8 @@ private slots:
 
     void on_cmdStop_clicked();
 
+    void on_dosing_button_inf_start_stop_clicked();
+
 protected:
     void showEvent(QShowEvent *se);
     void hideEvent(QHideEvent *he);
@@ -231,7 +244,8 @@ private:
     bool m_programLoading;
     bool m_settingsLoading;
 
-    QSerialPort m_serialPort;
+    QSerialPort m_serialPort_cnc;
+    QSerialPort m_serialPort_doser;
 
     frmSettings *m_settings;
     frmAbout m_frmAbout;
@@ -244,9 +258,11 @@ private:
     bool m_fileChanged = false;
     bool m_heightMapChanged = false;
 
-    QTimer m_timerConnection;
-    QTimer m_timerStateQuery;
-    QBasicTimer m_timerToolAnimation;
+// grbl cnc
+    QTimer m_timerConnection_cnc;
+    QTimer m_timerStateQuery_cnc;
+
+//    QBasicTimer m_timerToolAnimation;
 
     QStringList m_status;
     QStringList m_statusCaptions;

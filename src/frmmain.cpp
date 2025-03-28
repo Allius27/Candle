@@ -116,16 +116,16 @@ frmMain::frmMain(QWidget *parent) :
     ui->cmdYMinus->setBackColor(ui->cmdXMinus->backColor());
     ui->cmdYPlus->setBackColor(ui->cmdXMinus->backColor());
 
-    ui->cmdFit->setParent(ui->glwVisualizer);
-    ui->cmdIsometric->setParent(ui->glwVisualizer);
-    ui->cmdTop->setParent(ui->glwVisualizer);
-    ui->cmdFront->setParent(ui->glwVisualizer);
-    ui->cmdLeft->setParent(ui->glwVisualizer);
+//    ui->cmdFit->setParent(ui->glwVisualizer);
+//    ui->cmdIsometric->setParent(ui->glwVisualizer);
+//    ui->cmdTop->setParent(ui->glwVisualizer);
+//    ui->cmdFront->setParent(ui->glwVisualizer);
+//    ui->cmdLeft->setParent(ui->glwVisualizer);
 
-    ui->cmdHeightMapBorderAuto->setMinimumHeight(ui->chkHeightMapBorderShow->sizeHint().height());
-    ui->cmdHeightMapCreate->setMinimumHeight(ui->cmdFileOpen->sizeHint().height());
-    ui->cmdHeightMapLoad->setMinimumHeight(ui->cmdFileOpen->sizeHint().height());
-    ui->cmdHeightMapMode->setMinimumHeight(ui->cmdFileOpen->sizeHint().height());
+//    ui->cmdHeightMapBorderAuto->setMinimumHeight(ui->chkHeightMapBorderShow->sizeHint().height());
+//    ui->cmdHeightMapCreate->setMinimumHeight(ui->cmdFileOpen->sizeHint().height());
+//    ui->cmdHeightMapLoad->setMinimumHeight(ui->cmdFileOpen->sizeHint().height());
+//    ui->cmdHeightMapMode->setMinimumHeight(ui->cmdFileOpen->sizeHint().height());
 
     ui->cboJogStep->setValidator(new QDoubleValidator(0, 10000, 2));
     ui->cboJogFeed->setValidator(new QIntValidator(0, 100000));
@@ -145,41 +145,41 @@ frmMain::frmMain(QWidget *parent) :
     }
 
     // Setting up slider boxes
-    ui->slbFeedOverride->setRatio(1);
-    ui->slbFeedOverride->setMinimum(10);
-    ui->slbFeedOverride->setMaximum(200);
-    ui->slbFeedOverride->setCurrentValue(100);
-    ui->slbFeedOverride->setTitle(tr("Feed rate:"));
-    ui->slbFeedOverride->setSuffix("%");
-    connect(ui->slbFeedOverride, SIGNAL(toggled(bool)), this, SLOT(onOverridingToggled(bool)));
-    connect(ui->slbFeedOverride, &SliderBox::toggled, [=] {
-        updateProgramEstimatedTime(m_currentDrawer->viewParser()->getLineSegmentList());
-    });
-    connect(ui->slbFeedOverride, &SliderBox::valueChanged, [=] {
-        updateProgramEstimatedTime(m_currentDrawer->viewParser()->getLineSegmentList());
-    });
+//    ui->slbFeedOverride->setRatio(1);
+//    ui->slbFeedOverride->setMinimum(10);
+//    ui->slbFeedOverride->setMaximum(200);
+//    ui->slbFeedOverride->setCurrentValue(100);
+//    ui->slbFeedOverride->setTitle(tr("Feed rate:"));
+//    ui->slbFeedOverride->setSuffix("%");
+//    connect(ui->slbFeedOverride, SIGNAL(toggled(bool)), this, SLOT(onOverridingToggled(bool)));
+//    connect(ui->slbFeedOverride, &SliderBox::toggled, [=] {
+//        updateProgramEstimatedTime(m_currentDrawer->viewParser()->getLineSegmentList());
+//    });
+//    connect(ui->slbFeedOverride, &SliderBox::valueChanged, [=] {
+//        updateProgramEstimatedTime(m_currentDrawer->viewParser()->getLineSegmentList());
+//    });
 
-    ui->slbRapidOverride->setRatio(50);
-    ui->slbRapidOverride->setMinimum(25);
-    ui->slbRapidOverride->setMaximum(100);
-    ui->slbRapidOverride->setCurrentValue(100);
-    ui->slbRapidOverride->setTitle(tr("Rapid speed:"));
-    ui->slbRapidOverride->setSuffix("%");
-    connect(ui->slbRapidOverride, SIGNAL(toggled(bool)), this, SLOT(onOverridingToggled(bool)));
-    connect(ui->slbRapidOverride, &SliderBox::toggled, [=] {
-        updateProgramEstimatedTime(m_currentDrawer->viewParser()->getLineSegmentList());
-    });
-    connect(ui->slbRapidOverride, &SliderBox::valueChanged, [=] {
-        updateProgramEstimatedTime(m_currentDrawer->viewParser()->getLineSegmentList());
-    });
+//    ui->slbRapidOverride->setRatio(50);
+//    ui->slbRapidOverride->setMinimum(25);
+//    ui->slbRapidOverride->setMaximum(100);
+//    ui->slbRapidOverride->setCurrentValue(100);
+//    ui->slbRapidOverride->setTitle(tr("Rapid speed:"));
+//    ui->slbRapidOverride->setSuffix("%");
+//    connect(ui->slbRapidOverride, SIGNAL(toggled(bool)), this, SLOT(onOverridingToggled(bool)));
+//    connect(ui->slbRapidOverride, &SliderBox::toggled, [=] {
+//        updateProgramEstimatedTime(m_currentDrawer->viewParser()->getLineSegmentList());
+//    });
+//    connect(ui->slbRapidOverride, &SliderBox::valueChanged, [=] {
+//        updateProgramEstimatedTime(m_currentDrawer->viewParser()->getLineSegmentList());
+//    });
 
-    ui->slbSpindleOverride->setRatio(1);
-    ui->slbSpindleOverride->setMinimum(50);
-    ui->slbSpindleOverride->setMaximum(200);
-    ui->slbSpindleOverride->setCurrentValue(100);
-    ui->slbSpindleOverride->setTitle(tr("Spindle speed:"));
-    ui->slbSpindleOverride->setSuffix("%");
-    connect(ui->slbSpindleOverride, SIGNAL(toggled(bool)), this, SLOT(onOverridingToggled(bool)));
+//    ui->slbSpindleOverride->setRatio(1);
+//    ui->slbSpindleOverride->setMinimum(50);
+//    ui->slbSpindleOverride->setMaximum(200);
+//    ui->slbSpindleOverride->setCurrentValue(100);
+//    ui->slbSpindleOverride->setTitle(tr("Spindle speed:"));
+//    ui->slbSpindleOverride->setSuffix("%");
+//    connect(ui->slbSpindleOverride, SIGNAL(toggled(bool)), this, SLOT(onOverridingToggled(bool)));
 
     m_originDrawer = new OriginDrawer();
     m_codeDrawer = new GcodeDrawer();
@@ -201,18 +201,18 @@ frmMain::frmMain(QWidget *parent) :
     m_tableMenu->addAction(tr("&Insert line"), this, SLOT(onTableInsertLine()), insertShortcut->key());
     m_tableMenu->addAction(tr("&Delete lines"), this, SLOT(onTableDeleteLines()), deleteShortcut->key());
 
-    ui->glwVisualizer->addDrawable(m_originDrawer);
-    ui->glwVisualizer->addDrawable(m_codeDrawer);
-    ui->glwVisualizer->addDrawable(m_probeDrawer);
-    ui->glwVisualizer->addDrawable(&m_toolDrawer);
-    ui->glwVisualizer->addDrawable(&m_heightMapBorderDrawer);
-    ui->glwVisualizer->addDrawable(&m_heightMapGridDrawer);
-    ui->glwVisualizer->addDrawable(&m_heightMapInterpolationDrawer);
-    ui->glwVisualizer->addDrawable(&m_selectionDrawer);
-    ui->glwVisualizer->fitDrawable();
+//    ui->glwVisualizer->addDrawable(m_originDrawer);
+//    ui->glwVisualizer->addDrawable(m_codeDrawer);
+//    ui->glwVisualizer->addDrawable(m_probeDrawer);
+//    ui->glwVisualizer->addDrawable(&m_toolDrawer);
+//    ui->glwVisualizer->addDrawable(&m_heightMapBorderDrawer);
+//    ui->glwVisualizer->addDrawable(&m_heightMapGridDrawer);
+//    ui->glwVisualizer->addDrawable(&m_heightMapInterpolationDrawer);
+//    ui->glwVisualizer->addDrawable(&m_selectionDrawer);
+//    ui->glwVisualizer->fitDrawable();
 
-    connect(ui->glwVisualizer, SIGNAL(rotationChanged()), this, SLOT(onVisualizatorRotationChanged()));
-    connect(ui->glwVisualizer, SIGNAL(resized()), this, SLOT(placeVisualizerButtons()));
+//    connect(ui->glwVisualizer, SIGNAL(rotationChanged()), this, SLOT(onVisualizatorRotationChanged()));
+//    connect(ui->glwVisualizer, SIGNAL(resized()), this, SLOT(placeVisualizerButtons()));
     connect(&m_programModel, SIGNAL(dataChanged(QModelIndex,QModelIndex)), this, SLOT(onTableCellChanged(QModelIndex,QModelIndex)));
     connect(&m_programHeightmapModel, SIGNAL(dataChanged(QModelIndex,QModelIndex)), this, SLOT(onTableCellChanged(QModelIndex,QModelIndex)));
     connect(&m_probeModel, SIGNAL(dataChanged(QModelIndex,QModelIndex)), this, SLOT(onTableCellChanged(QModelIndex,QModelIndex)));
@@ -245,28 +245,39 @@ frmMain::frmMain(QWidget *parent) :
     }
 
     // Setting up spindle slider box
-    ui->slbSpindle->setTitle(tr("Speed:"));
-    ui->slbSpindle->setCheckable(false);
-    ui->slbSpindle->setChecked(true);
-    connect(ui->slbSpindle, &SliderBox::valueUserChanged, [=] {m_updateSpindleSpeed = true;});
-    connect(ui->slbSpindle, &SliderBox::valueChanged, [=] {
-        if (!ui->grpSpindle->isChecked() && ui->cmdSpindle->isChecked())
-            ui->grpSpindle->setTitle(tr("Spindle") + QString(tr(" (%1)")).arg(ui->slbSpindle->value()));
-    });
+//    ui->slbSpindle->setTitle(tr("Speed:"));
+//    ui->slbSpindle->setCheckable(false);
+//    ui->slbSpindle->setChecked(true);
+//    connect(ui->slbSpindle, &SliderBox::valueUserChanged, [=] {m_updateSpindleSpeed = true;});
+//    connect(ui->slbSpindle, &SliderBox::valueChanged, [=] {
+//        if (!ui->grpSpindle->isChecked() && ui->cmdSpindle->isChecked())
+//            ui->grpSpindle->setTitle(tr("Spindle") + QString(tr(" (%1)")).arg(ui->slbSpindle->value()));
+//    });
 
-    // Setup serial port
-    m_serialPort.setParity(QSerialPort::NoParity);
-    m_serialPort.setDataBits(QSerialPort::Data8);
-    m_serialPort.setFlowControl(QSerialPort::NoFlowControl);
-    m_serialPort.setStopBits(QSerialPort::OneStop);
+// Setup serial port for grbl controller
+    m_serialPort_cnc.setParity(QSerialPort::NoParity);
+    m_serialPort_cnc.setDataBits(QSerialPort::Data8);
+    m_serialPort_cnc.setFlowControl(QSerialPort::NoFlowControl);
+    m_serialPort_cnc.setStopBits(QSerialPort::OneStop);
+    m_serialPort_cnc.setBaudRate(QSerialPort::Baud115200);
 
-    if (m_settings->port() != "") {
-        m_serialPort.setPortName(m_settings->port());
-        m_serialPort.setBaudRate(m_settings->baud());
-    }
 
-    connect(&m_serialPort, SIGNAL(readyRead()), this, SLOT(onSerialPortReadyRead()), Qt::QueuedConnection);
-    connect(&m_serialPort, SIGNAL(error(QSerialPort::SerialPortError)), this, SLOT(onSerialPortError(QSerialPort::SerialPortError)));
+// Setup serial port for grbl controller
+    m_serialPort_doser.setParity(QSerialPort::NoParity);
+    m_serialPort_doser.setDataBits(QSerialPort::Data8);
+    m_serialPort_doser.setFlowControl(QSerialPort::NoFlowControl);
+    m_serialPort_doser.setStopBits(QSerialPort::OneStop);
+    m_serialPort_doser.setBaudRate(QSerialPort::Baud9600);
+
+
+//    if (m_settings->port() != "") {
+//        m_serialPort_cnc.setPortName(m_settings->port());
+//        m_serialPort_cnc.setBaudRate(m_settings->baud());
+//    }
+
+    connect(&m_serialPort_cnc, SIGNAL(error(QSerialPort::SerialPortError)), this, SLOT(onSerialPortCNCError(QSerialPort::SerialPortError)));
+    connect(&m_serialPort_doser, SIGNAL(error(QSerialPort::SerialPortError)), this, SLOT(onSerialPortDoserError(QSerialPort::SerialPortError)));
+
 
     this->installEventFilter(this);
     ui->tblProgram->installEventFilter(this);
@@ -275,10 +286,10 @@ frmMain::frmMain(QWidget *parent) :
     ui->splitPanels->handle(1)->installEventFilter(this);
     ui->splitPanels->installEventFilter(this);
 
-    connect(&m_timerConnection, SIGNAL(timeout()), this, SLOT(onTimerConnection()));
-    connect(&m_timerStateQuery, SIGNAL(timeout()), this, SLOT(onTimerStateQuery()));
-    m_timerConnection.start(1000);
-    m_timerStateQuery.start();
+    connect(&m_timerConnection_cnc, SIGNAL(timeout()), this, SLOT(onTimerConnection()));
+    connect(&m_timerStateQuery_cnc, SIGNAL(timeout()), this, SLOT(onTimerStateQuery()));
+    m_timerConnection_cnc.start(1000);
+    m_timerStateQuery_cnc.start();
 
     // Handle file drop
     if (qApp->arguments().count() > 1 && isGCodeFile(qApp->arguments().last())) {
@@ -321,9 +332,9 @@ void frmMain::preloadSettings()
     qApp->setStyleSheet(QString(qApp->styleSheet()).replace(QRegExp("font-size:\\s*\\d+"), "font-size: " + set.value("fontSize", "8").toString()));
 
     // Update v-sync in glformat
-    QGLFormat fmt = QGLFormat::defaultFormat();
-    fmt.setSwapInterval(set.value("vsync", false).toBool() ? 1 : 0);
-    QGLFormat::setDefaultFormat(fmt);
+//    QGLFormat fmt = QGLFormat::defaultFormat();
+//    fmt.setSwapInterval(set.value("vsync", false).toBool() ? 1 : 0);
+//    QGLFormat::setDefaultFormat(fmt);
 }
 
 void frmMain::loadSettings()
@@ -379,19 +390,19 @@ void frmMain::loadSettings()
 
     ui->chkAutoScroll->setChecked(set.value("autoScroll", false).toBool());
 
-    ui->slbSpindle->setRatio(100);
-    ui->slbSpindle->setMinimum(m_settings->spindleSpeedMin());
-    ui->slbSpindle->setMaximum(m_settings->spindleSpeedMax());
-    ui->slbSpindle->setValue(set.value("spindleSpeed", 100).toInt());
+//    ui->slbSpindle->setRatio(100);
+//    ui->slbSpindle->setMinimum(m_settings->spindleSpeedMin());
+//    ui->slbSpindle->setMaximum(m_settings->spindleSpeedMax());
+//    ui->slbSpindle->setValue(set.value("spindleSpeed", 100).toInt());
 
-    ui->slbFeedOverride->setChecked(set.value("feedOverride", false).toBool());
-    ui->slbFeedOverride->setValue(set.value("feedOverrideValue", 100).toInt());
+//    ui->slbFeedOverride->setChecked(set.value("feedOverride", false).toBool());
+//    ui->slbFeedOverride->setValue(set.value("feedOverrideValue", 100).toInt());
 
-    ui->slbRapidOverride->setChecked(set.value("rapidOverride", false).toBool());
-    ui->slbRapidOverride->setValue(set.value("rapidOverrideValue", 100).toInt());
+//    ui->slbRapidOverride->setChecked(set.value("rapidOverride", false).toBool());
+//    ui->slbRapidOverride->setValue(set.value("rapidOverrideValue", 100).toInt());
 
-    ui->slbSpindleOverride->setChecked(set.value("spindleOverride", false).toBool());
-    ui->slbSpindleOverride->setValue(set.value("spindleOverrideValue", 100).toInt());
+//    ui->slbSpindleOverride->setChecked(set.value("spindleOverride", false).toBool());
+//    ui->slbSpindleOverride->setValue(set.value("spindleOverrideValue", 100).toInt());
 
     m_settings->setUnits(set.value("units", 0).toInt());
     m_storedX = set.value("storedX", 0).toDouble();
@@ -413,7 +424,7 @@ void frmMain::loadSettings()
         ui->splitter->setStretchFactor(1, 1);
     } else ui->splitter->restoreState(splitterState);
 
-    ui->chkAutoScroll->setVisible(ui->splitter->sizes()[1]);
+//    ui->chkAutoScroll->setVisible(ui->splitter->sizes()[1]);
     resizeCheckBoxes();
 
     ui->cboCommand->setMinimumHeight(ui->cboCommand->height());
@@ -436,22 +447,22 @@ void frmMain::loadSettings()
     ui->cboJogFeed->setItems(set.value("jogFeeds").toStringList());
     ui->cboJogFeed->setCurrentIndex(ui->cboJogFeed->findText(set.value("jogFeed").toString()));
 
-    ui->txtHeightMapBorderX->setValue(set.value("heightmapBorderX", 0).toDouble());
-    ui->txtHeightMapBorderY->setValue(set.value("heightmapBorderY", 0).toDouble());
-    ui->txtHeightMapBorderWidth->setValue(set.value("heightmapBorderWidth", 1).toDouble());
-    ui->txtHeightMapBorderHeight->setValue(set.value("heightmapBorderHeight", 1).toDouble());
-    ui->chkHeightMapBorderShow->setChecked(set.value("heightmapBorderShow", false).toBool());
+//    ui->txtHeightMapBorderX->setValue(set.value("heightmapBorderX", 0).toDouble());
+//    ui->txtHeightMapBorderY->setValue(set.value("heightmapBorderY", 0).toDouble());
+//    ui->txtHeightMapBorderWidth->setValue(set.value("heightmapBorderWidth", 1).toDouble());
+//    ui->txtHeightMapBorderHeight->setValue(set.value("heightmapBorderHeight", 1).toDouble());
+//    ui->chkHeightMapBorderShow->setChecked(set.value("heightmapBorderShow", false).toBool());
 
-    ui->txtHeightMapGridX->setValue(set.value("heightmapGridX", 1).toDouble());
-    ui->txtHeightMapGridY->setValue(set.value("heightmapGridY", 1).toDouble());
-    ui->txtHeightMapGridZTop->setValue(set.value("heightmapGridZTop", 1).toDouble());
-    ui->txtHeightMapGridZBottom->setValue(set.value("heightmapGridZBottom", -1).toDouble());
-    ui->chkHeightMapGridShow->setChecked(set.value("heightmapGridShow", false).toBool());
+//    ui->txtHeightMapGridX->setValue(set.value("heightmapGridX", 1).toDouble());
+//    ui->txtHeightMapGridY->setValue(set.value("heightmapGridY", 1).toDouble());
+//    ui->txtHeightMapGridZTop->setValue(set.value("heightmapGridZTop", 1).toDouble());
+//    ui->txtHeightMapGridZBottom->setValue(set.value("heightmapGridZBottom", -1).toDouble());
+//    ui->chkHeightMapGridShow->setChecked(set.value("heightmapGridShow", false).toBool());
 
-    ui->txtHeightMapInterpolationStepX->setValue(set.value("heightmapInterpolationStepX", 1).toDouble());
-    ui->txtHeightMapInterpolationStepY->setValue(set.value("heightmapInterpolationStepY", 1).toDouble());
-    ui->cboHeightMapInterpolationType->setCurrentIndex(set.value("heightmapInterpolationType", 0).toInt());
-    ui->chkHeightMapInterpolationShow->setChecked(set.value("heightmapInterpolationShow", false).toBool());
+//    ui->txtHeightMapInterpolationStepX->setValue(set.value("heightmapInterpolationStepX", 1).toDouble());
+//    ui->txtHeightMapInterpolationStepY->setValue(set.value("heightmapInterpolationStepY", 1).toDouble());
+//    ui->cboHeightMapInterpolationType->setCurrentIndex(set.value("heightmapInterpolationType", 0).toInt());
+//    ui->chkHeightMapInterpolationShow->setChecked(set.value("heightmapInterpolationShow", false).toBool());
 
     foreach (ColorPicker* pick, m_settings->colors()) {
         pick->setColor(QColor(set.value(pick->objectName().mid(3), "black").toString()));
@@ -467,10 +478,10 @@ void frmMain::loadSettings()
     ui->scrollArea->updateMinimumWidth();
 
     // Restore panels state
-    ui->grpUserCommands->setChecked(set.value("userCommandsPanel", true).toBool());
-    ui->grpHeightMap->setChecked(set.value("heightmapPanel", true).toBool());
-    ui->grpSpindle->setChecked(set.value("spindlePanel", true).toBool());
-    ui->grpOverriding->setChecked(set.value("feedPanel", true).toBool());
+//    ui->grpUserCommands->setChecked(set.value("userCommandsPanel", true).toBool());
+//    ui->grpHeightMap->setChecked(set.value("heightmapPanel", true).toBool());
+//    ui->grpSpindle->setChecked(set.value("spindlePanel", true).toBool());
+//    ui->grpOverriding->setChecked(set.value("feedPanel", true).toBool());
     ui->grpJog->setChecked(set.value("jogPanel", true).toBool());
 
     // Restore last commands list
@@ -501,7 +512,7 @@ void frmMain::saveSettings()
     set.setValue("grayscaleSCode", m_settings->grayscaleSCode());
     set.setValue("drawModeVectors", m_settings->drawModeVectors());
 
-    set.setValue("spindleSpeed", ui->slbSpindle->value());
+//    set.setValue("spindleSpeed", ui->slbSpindle->value());
     set.setValue("lineWidth", m_settings->lineWidth());
     set.setValue("arcLength", m_settings->arcLength());
     set.setValue("arcDegree", m_settings->arcDegree());
@@ -526,10 +537,10 @@ void frmMain::saveSettings()
     set.setValue("splitter", ui->splitter->saveState());
     set.setValue("formGeometry", this->saveGeometry());
     set.setValue("formSettingsSize", m_settings->size());    
-    set.setValue("userCommandsPanel", ui->grpUserCommands->isChecked());
-    set.setValue("heightmapPanel", ui->grpHeightMap->isChecked());
-    set.setValue("spindlePanel", ui->grpSpindle->isChecked());
-    set.setValue("feedPanel", ui->grpOverriding->isChecked());
+//    set.setValue("userCommandsPanel", ui->grpUserCommands->isChecked());
+//    set.setValue("heightmapPanel", ui->grpHeightMap->isChecked());
+//    set.setValue("spindlePanel", ui->grpSpindle->isChecked());
+//    set.setValue("feedPanel", ui->grpOverriding->isChecked());
     set.setValue("jogPanel", ui->grpJog->isChecked());
     set.setValue("keyboardControl", ui->chkKeyboardControl->isChecked());
     set.setValue("autoCompletion", m_settings->autoCompletion());
@@ -550,12 +561,12 @@ void frmMain::saveSettings()
     set.setValue("fontSize", m_settings->fontSize());
     set.setValue("consoleMinHeight", ui->grpConsole->minimumHeight());
 
-    set.setValue("feedOverride", ui->slbFeedOverride->isChecked());
-    set.setValue("feedOverrideValue", ui->slbFeedOverride->value());
-    set.setValue("rapidOverride", ui->slbRapidOverride->isChecked());
-    set.setValue("rapidOverrideValue", ui->slbRapidOverride->value());
-    set.setValue("spindleOverride", ui->slbSpindleOverride->isChecked());
-    set.setValue("spindleOverrideValue", ui->slbSpindleOverride->value());
+//    set.setValue("feedOverride", ui->slbFeedOverride->isChecked());
+//    set.setValue("feedOverrideValue", ui->slbFeedOverride->value());
+//    set.setValue("rapidOverride", ui->slbRapidOverride->isChecked());
+//    set.setValue("rapidOverrideValue", ui->slbRapidOverride->value());
+//    set.setValue("spindleOverride", ui->slbSpindleOverride->isChecked());
+//    set.setValue("spindleOverrideValue", ui->slbSpindleOverride->value());
 
     foreach (StyledToolButton* button, this->findChildren<StyledToolButton*>(QRegExp("cmdUser\\d"))) {
         int i = button->objectName().right(1).toInt();
@@ -567,22 +578,22 @@ void frmMain::saveSettings()
     set.setValue("jogFeeds", ui->cboJogFeed->items());
     set.setValue("jogFeed", ui->cboJogFeed->currentText());
 
-    set.setValue("heightmapBorderX", ui->txtHeightMapBorderX->value());
-    set.setValue("heightmapBorderY", ui->txtHeightMapBorderY->value());
-    set.setValue("heightmapBorderWidth", ui->txtHeightMapBorderWidth->value());
-    set.setValue("heightmapBorderHeight", ui->txtHeightMapBorderHeight->value());
-    set.setValue("heightmapBorderShow", ui->chkHeightMapBorderShow->isChecked());
+//    set.setValue("heightmapBorderX", ui->txtHeightMapBorderX->value());
+//    set.setValue("heightmapBorderY", ui->txtHeightMapBorderY->value());
+//    set.setValue("heightmapBorderWidth", ui->txtHeightMapBorderWidth->value());
+//    set.setValue("heightmapBorderHeight", ui->txtHeightMapBorderHeight->value());
+//    set.setValue("heightmapBorderShow", ui->chkHeightMapBorderShow->isChecked());
 
-    set.setValue("heightmapGridX", ui->txtHeightMapGridX->value());
-    set.setValue("heightmapGridY", ui->txtHeightMapGridY->value());
-    set.setValue("heightmapGridZTop", ui->txtHeightMapGridZTop->value());
-    set.setValue("heightmapGridZBottom", ui->txtHeightMapGridZBottom->value());
-    set.setValue("heightmapGridShow", ui->chkHeightMapGridShow->isChecked());
+//    set.setValue("heightmapGridX", ui->txtHeightMapGridX->value());
+//    set.setValue("heightmapGridY", ui->txtHeightMapGridY->value());
+//    set.setValue("heightmapGridZTop", ui->txtHeightMapGridZTop->value());
+//    set.setValue("heightmapGridZBottom", ui->txtHeightMapGridZBottom->value());
+//    set.setValue("heightmapGridShow", ui->chkHeightMapGridShow->isChecked());
 
-    set.setValue("heightmapInterpolationStepX", ui->txtHeightMapInterpolationStepX->value());
-    set.setValue("heightmapInterpolationStepY", ui->txtHeightMapInterpolationStepY->value());
-    set.setValue("heightmapInterpolationType", ui->cboHeightMapInterpolationType->currentIndex());
-    set.setValue("heightmapInterpolationShow", ui->chkHeightMapInterpolationShow->isChecked());
+//    set.setValue("heightmapInterpolationStepX", ui->txtHeightMapInterpolationStepX->value());
+//    set.setValue("heightmapInterpolationStepY", ui->txtHeightMapInterpolationStepY->value());
+//    set.setValue("heightmapInterpolationType", ui->cboHeightMapInterpolationType->currentIndex());
+//    set.setValue("heightmapInterpolationShow", ui->chkHeightMapInterpolationShow->isChecked());
 
     foreach (ColorPicker* pick, m_settings->colors()) {
         set.setValue(pick->objectName().mid(3), pick->color().name());
@@ -622,19 +633,19 @@ bool frmMain::saveChanges(bool heightMapMode)
 }
 
 void frmMain::updateControlsState() {
-    bool portOpened = m_serialPort.isOpen();
+    bool cnc_portOpened = m_serialPort_cnc.isOpen();
 
-    ui->grpState->setEnabled(portOpened);
-    ui->grpControl->setEnabled(portOpened);
-    ui->widgetUserCommands->setEnabled(portOpened && !m_processingFile);
-    ui->widgetSpindle->setEnabled(portOpened);
-    ui->widgetJog->setEnabled(portOpened && !m_processingFile);
+    ui->grpState->setEnabled(cnc_portOpened);
+    ui->grpControl->setEnabled(cnc_portOpened);
+//    ui->widgetUserCommands->setEnabled(cnc_portOpened && !m_processingFile);
+//    ui->widgetSpindle->setEnabled(portOpened);
+    ui->widgetJog->setEnabled(cnc_portOpened && !m_processingFile);
 //    ui->grpConsole->setEnabled(portOpened);
-    ui->cboCommand->setEnabled(portOpened && (!ui->chkKeyboardControl->isChecked()));
-    ui->cmdCommandSend->setEnabled(portOpened);
+    ui->cboCommand->setEnabled(cnc_portOpened && (!ui->chkKeyboardControl->isChecked()));
+    ui->cmdCommandSend->setEnabled(cnc_portOpened);
 //    ui->widgetFeed->setEnabled(!m_transferringFile);
 
-    ui->chkTestMode->setEnabled(portOpened && !m_processingFile);
+    ui->chkTestMode->setEnabled(cnc_portOpened && !m_processingFile);
     ui->cmdHome->setEnabled(!m_processingFile);
     ui->cmdTouch->setEnabled(!m_processingFile);
     ui->cmdZeroXY->setEnabled(!m_processingFile);
@@ -642,13 +653,13 @@ void frmMain::updateControlsState() {
     ui->cmdRestoreOrigin->setEnabled(!m_processingFile);
     ui->cmdSafePosition->setEnabled(!m_processingFile);
     ui->cmdUnlock->setEnabled(!m_processingFile);
-    ui->cmdSpindle->setEnabled(!m_processingFile);
+//    ui->cmdSpindle->setEnabled(!m_processingFile);
 
     ui->actFileNew->setEnabled(!m_processingFile);
     ui->actFileOpen->setEnabled(!m_processingFile);
     ui->cmdFileOpen->setEnabled(!m_processingFile);
     ui->cmdFileReset->setEnabled(!m_processingFile && m_programModel.rowCount() > 1);
-    ui->cmdFileSend->setEnabled(portOpened && !m_processingFile && m_programModel.rowCount() > 1);
+    ui->cmdFileSend->setEnabled(cnc_portOpened && !m_processingFile && m_programModel.rowCount() > 1);
     ui->cmdFilePause->setEnabled(m_processingFile && !ui->chkTestMode->isChecked());
     ui->cmdFileAbort->setEnabled(m_processingFile);
     ui->actFileOpen->setEnabled(!m_processingFile);
@@ -661,7 +672,7 @@ void frmMain::updateControlsState() {
                                                          QAbstractItemView::DoubleClicked | QAbstractItemView::SelectedClicked
                                                          | QAbstractItemView::EditKeyPressed | QAbstractItemView::AnyKeyPressed);
 
-    if (!portOpened) {
+    if (!cnc_portOpened) {
         ui->txtStatus->setText(tr("Not connected"));
         ui->txtStatus->setStyleSheet(QString("background-color: palette(button); color: palette(text);"));
     }
@@ -689,17 +700,17 @@ void frmMain::updateControlsState() {
     ui->cmdFileAbort->ensurePolished();
 
     // Heightmap
-    m_heightMapBorderDrawer.setVisible(ui->chkHeightMapBorderShow->isChecked() && m_heightMapMode);
-    m_heightMapGridDrawer.setVisible(ui->chkHeightMapGridShow->isChecked() && m_heightMapMode);
-    m_heightMapInterpolationDrawer.setVisible(ui->chkHeightMapInterpolationShow->isChecked() && m_heightMapMode);
+//    m_heightMapBorderDrawer.setVisible(ui->chkHeightMapBorderShow->isChecked() && m_heightMapMode);
+//    m_heightMapGridDrawer.setVisible(ui->chkHeightMapGridShow->isChecked() && m_heightMapMode);
+//    m_heightMapInterpolationDrawer.setVisible(ui->chkHeightMapInterpolationShow->isChecked() && m_heightMapMode);
 
     ui->grpProgram->setTitle(m_heightMapMode ? tr("Heightmap") : tr("G-code program"));
     ui->grpProgram->setProperty("overrided", m_heightMapMode);
     style()->unpolish(ui->grpProgram);
     ui->grpProgram->ensurePolished();
 
-    ui->grpHeightMapSettings->setVisible(m_heightMapMode);
-    ui->grpHeightMapSettings->setEnabled(!m_processingFile && !ui->chkKeyboardControl->isChecked());
+//    ui->grpHeightMapSettings->setVisible(m_heightMapMode);
+//    ui->grpHeightMapSettings->setEnabled(!m_processingFile && !ui->chkKeyboardControl->isChecked());
 
     ui->cboJogStep->setEditable(!ui->chkKeyboardControl->isChecked());
     ui->cboJogFeed->setEditable(!ui->chkKeyboardControl->isChecked());
@@ -707,38 +718,82 @@ void frmMain::updateControlsState() {
     ui->cboJogFeed->setStyleSheet(ui->cboJogStep->styleSheet());
 
     ui->chkTestMode->setVisible(!m_heightMapMode);
-    ui->chkAutoScroll->setVisible(ui->splitter->sizes()[1] && !m_heightMapMode);
+//    ui->chkAutoScroll->setVisible(ui->splitter->sizes()[1] && !m_heightMapMode);
 
     ui->tblHeightMap->setVisible(m_heightMapMode);
     ui->tblProgram->setVisible(!m_heightMapMode);
 
-    ui->widgetHeightMap->setEnabled(!m_processingFile && m_programModel.rowCount() > 1);
-    ui->cmdHeightMapMode->setEnabled(!ui->txtHeightMap->text().isEmpty());
+//    ui->widgetHeightMap->setEnabled(!m_processingFile && m_programModel.rowCount() > 1);
+//    ui->cmdHeightMapMode->setEnabled(!ui->txtHeightMap->text().isEmpty());
 
     ui->cmdFileSend->setText(m_heightMapMode ? tr("Probe") : tr("Send"));
 
-    ui->chkHeightMapUse->setEnabled(!m_heightMapMode && !ui->txtHeightMap->text().isEmpty());
+//    ui->chkHeightMapUse->setEnabled(!m_heightMapMode && !ui->txtHeightMap->text().isEmpty());
 
-    ui->actFileSaveTransformedAs->setVisible(ui->chkHeightMapUse->isChecked());
+//    ui->actFileSaveTransformedAs->setVisible(ui->chkHeightMapUse->isChecked());
 
-    ui->cmdFileSend->menu()->actions().first()->setEnabled(!ui->cmdHeightMapMode->isChecked());
+//    ui->cmdFileSend->menu()->actions().first()->setEnabled(!ui->cmdHeightMapMode->isChecked());
 
-    m_selectionDrawer.setVisible(!ui->cmdHeightMapMode->isChecked());    
+//    m_selectionDrawer.setVisible(!ui->cmdHeightMapMode->isChecked());
 }
 
 void frmMain::openPort()
 {
-    if (m_serialPort.open(QIODevice::ReadWrite)) {
-        ui->txtStatus->setText(tr("Port opened"));
-        ui->txtStatus->setStyleSheet(QString("background-color: palette(button); color: palette(text);"));
-//        updateControlsState();
-        grblReset();
+
+// cnc
+
+    if ( !m_serialPort_cnc.isOpen() )
+    {
+        for ( const QSerialPortInfo& item: QSerialPortInfo::availablePorts() )
+        {
+            m_serialPort_cnc.setPort(item);
+            m_serialPort_cnc.open(QIODevice::ReadWrite);
+
+            m_serialPort_cnc.write(QByteArray(1, '?'));
+
+            QString reply = m_serialPort_cnc.readAll();
+            while (m_serialPort_cnc.waitForReadyRead(500))
+                reply += m_serialPort_cnc.readAll();
+
+            if ( reply.contains("Grbl") || reply.contains("MPos") )
+            {
+                // grbl found
+                break;
+            }
+        }
+
+        if (m_serialPort_cnc.isOpen()) {
+            ui->txtStatus->setText(tr("Port opened"));
+            ui->txtStatus->setStyleSheet(QString("background-color: palette(button); color: palette(text);"));
+    //        updateControlsState();
+
+            connect(&m_serialPort_cnc, SIGNAL(readyRead()), this, SLOT(onSerialPortReadyRead()), Qt::QueuedConnection);
+            grblReset();
+        }
+    }
+
+// doser
+    for ( const QSerialPortInfo& item: QSerialPortInfo::availablePorts() )
+    {
+        m_serialPort_doser.setPort(item);
+        m_serialPort_doser.open(QIODevice::ReadWrite);
+        m_serialPort_doser.write("H\n");
+
+        QString reply = m_serialPort_doser.readAll();
+        while (m_serialPort_doser.waitForReadyRead(500))
+            reply += m_serialPort_doser.readAll();
+
+        if ( reply.contains("H") )
+        {
+            // doser controller
+            break;
+        }
     }
 }
 
-void frmMain::sendCommand(QString command, int tableIndex, bool showInConsole)
+void frmMain::sendCommand( QString command, int tableIndex, bool showInConsole)
 {
-    if (!m_serialPort.isOpen() || !m_resetCompleted) return;
+    if (!m_serialPort_cnc.isOpen() || !m_resetCompleted) return;
 
     command = command.toUpper();
 
@@ -772,29 +827,31 @@ void frmMain::sendCommand(QString command, int tableIndex, bool showInConsole)
     ca.tableIndex = tableIndex;
 
     m_commands.append(ca);
-
+/*
     // Processing spindle speed only from g-code program
     QRegExp s("[Ss]0*(\\d+)");
     if (s.indexIn(command) != -1 && ca.tableIndex > -2) {
         int speed = s.cap(1).toInt();
-        if (ui->slbSpindle->value() != speed) {
-            ui->slbSpindle->setValue(speed);
-        }
+//        if (ui->slbSpindle->value() != speed) {
+//            ui->slbSpindle->setValue(speed);
+//        }
     }
-
+*/
     // Set M2 & M30 commands sent flag
     if (command.contains(QRegExp("M0*2|M30"))) {
         m_fileEndSent = true;
     }
 
-    m_serialPort.write((command + "\r").toLatin1());
+    m_serialPort_cnc.write((command + "\r").toLatin1());
 }
 
 void frmMain::grblReset()
 {
     qDebug() << "grbl reset";
 
-    m_serialPort.write(QByteArray(1, (char)24));
+//    m_serialPort_cnc.setPortName(m_settings->port());
+
+    m_serialPort_cnc.write(QByteArray(1, (char)24));
 //    m_serialPort.flush();
 
     m_processingFile = false;
@@ -837,8 +894,8 @@ int frmMain::bufferLength()
 
 void frmMain::onSerialPortReadyRead()
 {
-    while (m_serialPort.canReadLine()) {
-        QString data = m_serialPort.readLine().trimmed();
+    while (m_serialPort_cnc.canReadLine()) {
+        QString data = m_serialPort_cnc.readLine().trimmed();
 
         // Filter prereset responses
         if (m_reseting) {
@@ -846,7 +903,7 @@ void frmMain::onSerialPortReadyRead()
             if (!dataIsReset(data)) continue;
             else {
                 m_reseting = false;
-                m_timerStateQuery.setInterval(m_settings->queryStateTime());
+                m_timerStateQuery_cnc.setInterval(m_settings->queryStateTime());
             }
         }
 
@@ -887,7 +944,7 @@ void frmMain::onSerialPortReadyRead()
                 ui->chkTestMode->setEnabled(status != RUN && !m_processingFile);
                 ui->chkTestMode->setChecked(status == CHECK);
                 ui->cmdFilePause->setChecked(status == HOLD0 || status == HOLD1 || status == QUEUE);
-                ui->cmdSpindle->setEnabled(!m_processingFile || status == HOLD0);
+//                ui->cmdSpindle->setEnabled(!m_processingFile || status == HOLD0);
 #ifdef WINDOWS
                 if (QSysInfo::windowsVersion() >= QSysInfo::WV_WINDOWS7) {
                     if (m_taskBarProgress) m_taskBarProgress->setPaused(status == HOLD0 || status == HOLD1 || status == QUEUE);
@@ -898,7 +955,7 @@ void frmMain::onSerialPortReadyRead()
                 if (m_processingFile) {
                     QTime time(0, 0, 0);
                     int elapsed = m_startTime.elapsed();
-                    ui->glwVisualizer->setSpendTime(time.addMSecs(elapsed));
+//                    ui->glwVisualizer->setSpendTime(time.addMSecs(elapsed));
                 }
 
                 // Test for job complete
@@ -924,15 +981,15 @@ void frmMain::onSerialPortReadyRead()
 
                     qApp->beep();
 
-                    m_timerStateQuery.stop();
-                    m_timerConnection.stop();
+                    m_timerStateQuery_cnc.stop();
+                    m_timerConnection_cnc.stop();
 
-                    QMessageBox::information(this, qApp->applicationDisplayName(), tr("Job done.\nTime elapsed: %1")
-                                             .arg(ui->glwVisualizer->spendTime().toString("hh:mm:ss")));
+//                    QMessageBox::information(this, qApp->applicationDisplayName(), tr("Job done.\nTime elapsed: %1")
+//                                             .arg(ui->glwVisualizer->spendTime().toString("hh:mm:ss")));
 
-                    m_timerStateQuery.setInterval(m_settings->queryStateTime());
-                    m_timerConnection.start();
-                    m_timerStateQuery.start();
+                    m_timerStateQuery_cnc.setInterval(m_settings->queryStateTime());
+                    m_timerConnection_cnc.start();
+                    m_timerStateQuery_cnc.start();
                 }
 
                 // Store status
@@ -1027,28 +1084,30 @@ void frmMain::onSerialPortReadyRead()
                              << m_fileProcessedCommandIndex;
                 }
             }
-
+/*
             // Get overridings
             static QRegExp ov("Ov:([^,]*),([^,]*),([^,^>^|]*)");
             if (ov.indexIn(data) != -1)
-            {                
-                updateOverride(ui->slbFeedOverride, ov.cap(1).toInt(), 0x91);
-                updateOverride(ui->slbSpindleOverride, ov.cap(3).toInt(), 0x9a);
+            {
+
+//                updateOverride(ui->slbFeedOverride, ov.cap(1).toInt(), 0x91);
+//                updateOverride(ui->slbSpindleOverride, ov.cap(3).toInt(), 0x9a);
 
                 int rapid = ov.cap(2).toInt();
-                ui->slbRapidOverride->setCurrentValue(rapid);
+//                ui->slbRapidOverride->setCurrentValue(rapid);
 
                 int target = ui->slbRapidOverride->isChecked() ? ui->slbRapidOverride->value() : 100;
 
+
                 if (rapid != target) switch (target) {
                 case 25:
-                    m_serialPort.write(QByteArray(1, char(0x97)));
+                    m_serialPort_cnc.write(QByteArray(1, char(0x97)));
                     break;
                 case 50:
-                    m_serialPort.write(QByteArray(1, char(0x96)));
+                    m_serialPort_cnc.write(QByteArray(1, char(0x96)));
                     break;
                 case 100:
-                    m_serialPort.write(QByteArray(1, char(0x95)));
+                    m_serialPort_cnc.write(QByteArray(1, char(0x95)));
                     break;
                 }
 
@@ -1058,7 +1117,7 @@ void frmMain::onSerialPortReadyRead()
                 if (pn.indexIn(data) != -1) {
                     pinState.append(QString(tr("PS: %1")).arg(pn.cap(1)));
                 }
-
+/*
                 // Process spindle state
                 static QRegExp as("A:([^,^>^|]+)");
                 if (as.indexIn(data) != -1) {
@@ -1078,13 +1137,14 @@ void frmMain::onSerialPortReadyRead()
                     m_timerToolAnimation.stop();
                     ui->cmdSpindle->setChecked(false);
                 }
-                ui->glwVisualizer->setPinState(pinState);
-            }
 
+//                ui->glwVisualizer->setPinState(pinState);
+            }
+*/
             // Get feed/spindle values
             static QRegExp fs("FS:([^,]*),([^,^|^>]*)");            
             if (fs.indexIn(data) != -1) {
-                ui->glwVisualizer->setSpeedState((QString(tr("F/S: %1 / %2")).arg(fs.cap(1)).arg(fs.cap(2))));
+//                ui->glwVisualizer->setSpeedState((QString(tr("F/S: %1 / %2")).arg(fs.cap(1)).arg(fs.cap(2))));
             }
 
         } else if (data.length() > 0) {
@@ -1119,7 +1179,7 @@ void frmMain::onSerialPortReadyRead()
                     // Process parser status
                     if (ca.command.toUpper() == "$G" && ca.tableIndex == -3) {
                         // Update status in visualizer window
-                        ui->glwVisualizer->setParserStatus(response.left(response.indexOf("; ")));
+//                        ui->glwVisualizer->setParserStatus(response.left(response.indexOf("; ")));
 
                         // Store parser status
                         if (m_processingFile) storeParserState();
@@ -1128,7 +1188,7 @@ void frmMain::onSerialPortReadyRead()
                         QRegExp rx(".*S([\\d\\.]+)");
                         if (rx.indexIn(response) != -1) {
                             double speed = toMetric(rx.cap(1).toDouble()); //RPM in imperial?
-                            ui->slbSpindle->setCurrentValue(speed);
+//                            ui->slbSpindle->setCurrentValue(speed);
                         }
 
                         m_updateParserStatus = true;
@@ -1202,7 +1262,7 @@ void frmMain::onSerialPortReadyRead()
 
                     // Change state query time on check mode on
                     if (ca.command.contains(QRegExp("$[cC]"))) {
-                        m_timerStateQuery.setInterval(response.contains("Enable") ? 1000 : m_settings->queryStateTime());
+                        m_timerStateQuery_cnc.setInterval(response.contains("Enable") ? 1000 : m_settings->queryStateTime());
                     }
 
                     // Add response to console
@@ -1271,7 +1331,7 @@ void frmMain::onSerialPortReadyRead()
                                 holding = true;         // Hold transmit while messagebox is visible
                                 response.clear();
 
-                                m_serialPort.write("!");
+                                m_serialPort_cnc.write("!");
                                 m_senderErrorBox->checkBox()->setChecked(false);
                                 qApp->beep();
                                 int result = m_senderErrorBox->exec();
@@ -1279,7 +1339,7 @@ void frmMain::onSerialPortReadyRead()
                                 holding = false;
                                 errors.clear();
                                 if (m_senderErrorBox->checkBox()->isChecked()) m_settings->setIgnoreErrors(true);
-                                if (result == QMessageBox::Ignore) m_serialPort.write("~"); else on_cmdFileAbort_clicked();
+                                if (result == QMessageBox::Ignore) m_serialPort_cnc.write("~"); else on_cmdFileAbort_clicked();
                             }
                         }
 
@@ -1366,49 +1426,72 @@ void frmMain::onSerialPortReadyRead()
     }
 }
 
-void frmMain::onSerialPortError(QSerialPort::SerialPortError error)
+void frmMain::onSerialPortCNCError(QSerialPort::SerialPortError error)
 {
     static QSerialPort::SerialPortError previousError;
 
     if (error != QSerialPort::NoError && error != previousError) {
         previousError = error;
-        ui->txtConsole->appendPlainText(tr("Serial port error ") + QString::number(error) + ": " + m_serialPort.errorString());
-        if (m_serialPort.isOpen()) {
-            m_serialPort.close();
+        ui->txtConsole->appendPlainText(tr("Serial port error ") + QString::number(error) + ": " + m_serialPort_cnc.errorString());
+        if (m_serialPort_cnc.isOpen()) {
+            m_serialPort_cnc.close();
+
+            disconnect(&m_serialPort_cnc, SIGNAL(readyRead()));
+
             updateControlsState();
         }
     }
 }
 
+void frmMain::onSerialPortDoserError(QSerialPort::SerialPortError error)
+{
+    static QSerialPort::SerialPortError previousError;
+
+    if (error != QSerialPort::NoError && error != previousError) {
+        previousError = error;
+        ui->doser_txtStatus->setText("Disconnected");
+
+        if (m_serialPort_doser.isOpen()) {
+            m_serialPort_doser.close();
+
+            disconnect(&m_serialPort_doser, SIGNAL(readyRead()));
+        }
+    }
+}
+
+
 void frmMain::onTimerConnection()
 {
-    if (!m_serialPort.isOpen()) {
+    if (!m_serialPort_cnc.isOpen()) {
         openPort();
     } else if (!m_homing/* && !m_reseting*/ && !ui->cmdFilePause->isChecked() && m_queue.length() == 0) {
         if (m_updateSpindleSpeed) {
             m_updateSpindleSpeed = false;
-            sendCommand(QString("S%1").arg(ui->slbSpindle->value()), -2, m_settings->showUICommands());
+//            sendCommand(QString("S%1").arg(ui->slbSpindle->value()), -2, m_settings->showUICommands());
         }
         if (m_updateParserStatus) {
             m_updateParserStatus = false;
             sendCommand("$G", -3, false);
         }
     }
+
+//    if ( !m_serialPort_doser.isOpen() )
+
 }
 
 void frmMain::onTimerStateQuery()
 {
-    if (m_serialPort.isOpen() && m_resetCompleted && m_statusReceived) {
-        m_serialPort.write(QByteArray(1, '?'));
+    if (m_serialPort_cnc.isOpen() && m_resetCompleted && m_statusReceived) {
+        m_serialPort_cnc.write(QByteArray(1, '?'));
         m_statusReceived = false;
     }
 
-    ui->glwVisualizer->setBufferState(QString(tr("Buffer: %1 / %2 / %3")).arg(bufferLength()).arg(m_commands.length()).arg(m_queue.length()));
+//    ui->glwVisualizer->setBufferState(QString(tr("Buffer: %1 / %2 / %3")).arg(bufferLength()).arg(m_commands.length()).arg(m_queue.length()));
 }
 
 void frmMain::onVisualizatorRotationChanged()
 {
-    ui->cmdIsometric->setChecked(false);
+//    ui->cmdIsometric->setChecked(false);
 }
 
 void frmMain::onScroolBarAction(int action)
@@ -1425,12 +1508,12 @@ void frmMain::onJogTimer()
 
 void frmMain::placeVisualizerButtons()
 {
-    ui->cmdIsometric->move(ui->glwVisualizer->width() - ui->cmdIsometric->width() - 8, 8);
-    ui->cmdTop->move(ui->cmdIsometric->geometry().left() - ui->cmdTop->width() - 8, 8);
-    ui->cmdLeft->move(ui->glwVisualizer->width() - ui->cmdLeft->width() - 8, ui->cmdIsometric->geometry().bottom() + 8);
-    ui->cmdFront->move(ui->cmdLeft->geometry().left() - ui->cmdFront->width() - 8, ui->cmdIsometric->geometry().bottom() + 8);
+//    ui->cmdIsometric->move(ui->glwVisualizer->width() - ui->cmdIsometric->width() - 8, 8);
+//    ui->cmdTop->move(ui->cmdIsometric->geometry().left() - ui->cmdTop->width() - 8, 8);
+//    ui->cmdLeft->move(ui->glwVisualizer->width() - ui->cmdLeft->width() - 8, ui->cmdIsometric->geometry().bottom() + 8);
+//    ui->cmdFront->move(ui->cmdLeft->geometry().left() - ui->cmdFront->width() - 8, ui->cmdIsometric->geometry().bottom() + 8);
 //    ui->cmdFit->move(ui->cmdTop->geometry().left() - ui->cmdFit->width() - 10, 10);
-    ui->cmdFit->move(ui->glwVisualizer->width() - ui->cmdFit->width() - 8, ui->cmdLeft->geometry().bottom() + 8);
+//    ui->cmdFit->move(ui->glwVisualizer->width() - ui->cmdFit->width() - 8, ui->cmdLeft->geometry().bottom() + 8);
 }
 
 void frmMain::showEvent(QShowEvent *se)
@@ -1449,7 +1532,7 @@ void frmMain::showEvent(QShowEvent *se)
     }
 #endif
 
-    ui->glwVisualizer->setUpdatesEnabled(true);
+//    ui->glwVisualizer->setUpdatesEnabled(true);
 
     resizeCheckBoxes();
 }
@@ -1458,7 +1541,7 @@ void frmMain::hideEvent(QHideEvent *he)
 {
     Q_UNUSED(he)
 
-    ui->glwVisualizer->setUpdatesEnabled(false);
+//    ui->glwVisualizer->setUpdatesEnabled(false);
 }
 
 void frmMain::resizeEvent(QResizeEvent *re)
@@ -1472,11 +1555,11 @@ void frmMain::resizeEvent(QResizeEvent *re)
 
 void frmMain::resizeTableHeightMapSections()
 {
-    if (ui->tblHeightMap->horizontalHeader()->defaultSectionSize()
-            * ui->tblHeightMap->horizontalHeader()->count() < ui->glwVisualizer->width())
-        ui->tblHeightMap->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch); else {
-        ui->tblHeightMap->horizontalHeader()->setSectionResizeMode(QHeaderView::Interactive);
-    }
+//    if (ui->tblHeightMap->horizontalHeader()->defaultSectionSize()
+//            * ui->tblHeightMap->horizontalHeader()->count() < ui->glwVisualizer->width())
+//        ui->tblHeightMap->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch); else {
+//        ui->tblHeightMap->horizontalHeader()->setSectionResizeMode(QHeaderView::Interactive);
+//    }
 }
 
 void frmMain::resizeCheckBoxes()
@@ -1523,12 +1606,14 @@ void frmMain::resizeCheckBoxes()
 
 void frmMain::timerEvent(QTimerEvent *te)
 {
+    /*
     if (te->timerId() == m_timerToolAnimation.timerId()) {
         m_toolDrawer.rotate((m_spindleCW ? -40 : 40) * (double)(ui->slbSpindle->currentValue())
                             / (ui->slbSpindle->maximum()));
     } else {
         QMainWindow::timerEvent(te);
     }
+    */
 }
 
 void frmMain::closeEvent(QCloseEvent *ce)
@@ -1549,7 +1634,7 @@ void frmMain::closeEvent(QCloseEvent *ce)
         return;
     }
 
-    if (m_serialPort.isOpen()) m_serialPort.close();
+    if (m_serialPort_cnc.isOpen()) m_serialPort_cnc.close();
     if (m_queue.length() > 0) {
         m_commands.clear();
         m_queue.clear();
@@ -1641,7 +1726,7 @@ void frmMain::resetHeightmap()
     ui->tblHeightMap->setModel(NULL);
     m_heightMapModel.resize(1, 1);
 
-    ui->txtHeightMap->clear();
+//    ui->txtHeightMap->clear();
     m_heightMapFileName.clear();
     m_heightMapChanged = false;
 }
@@ -1664,14 +1749,14 @@ void frmMain::loadFile(QList<QString> data)
     // Reset code drawer
     m_currentDrawer = m_codeDrawer;
     m_codeDrawer->update();
-    ui->glwVisualizer->fitDrawable(m_codeDrawer);
+//    ui->glwVisualizer->fitDrawable(m_codeDrawer);
     updateProgramEstimatedTime(QList<LineSegment*>());
 
     // Update interface
-    ui->chkHeightMapUse->setChecked(false);
-    ui->grpHeightMap->setProperty("overrided", false);
-    style()->unpolish(ui->grpHeightMap);
-    ui->grpHeightMap->ensurePolished();
+//    ui->chkHeightMapUse->setChecked(false);
+//    ui->grpHeightMap->setProperty("overrided", false);
+//    style()->unpolish(ui->grpHeightMap);
+//    ui->grpHeightMap->ensurePolished();
 
     // Reset tableview
     QByteArray headerState = ui->tblProgram->horizontalHeader()->saveState();
@@ -1760,7 +1845,7 @@ void frmMain::loadFile(QList<QString> data)
 
     //  Update code drawer
     m_codeDrawer->update();
-    ui->glwVisualizer->fitDrawable(m_codeDrawer);
+//    ui->glwVisualizer->fitDrawable(m_codeDrawer);
 
     resetHeightmap();
     updateControlsState();
@@ -1798,11 +1883,11 @@ QTime frmMain::updateProgramEstimatedTime(QList<LineSegment*> lines)
     //    foreach (LineSegment *ls, lines) {
         double length = (ls->getEnd() - ls->getStart()).length();
 
-        if (!qIsNaN(length) && !qIsNaN(ls->getSpeed()) && ls->getSpeed() != 0) time +=
-                length / ((ui->slbFeedOverride->isChecked() && !ls->isFastTraverse())
-                          ? (ls->getSpeed() * ui->slbFeedOverride->value() / 100) :
-                            (ui->slbRapidOverride->isChecked() && ls->isFastTraverse())
-                             ? (ls->getSpeed() * ui->slbRapidOverride->value() / 100) : ls->getSpeed());        // TODO: Update for rapid override
+//        if (!qIsNaN(length) && !qIsNaN(ls->getSpeed()) && ls->getSpeed() != 0) time +=
+//                length / ((ui->slbFeedOverride->isChecked() && !ls->isFastTraverse())
+//                          ? (ls->getSpeed() * ui->slbFeedOverride->value() / 100) :
+//                            (ui->slbRapidOverride->isChecked() && ls->isFastTraverse())
+//                             ? (ls->getSpeed() * ui->slbRapidOverride->value() / 100) : ls->getSpeed());        // TODO: Update for rapid override
 
 //        qDebug() << "length/time:" << length << ((ui->chkFeedOverride->isChecked() && !ls->isFastTraverse())
 //                                                 ? (ls->getSpeed() * ui->txtFeed->value() / 100) : ls->getSpeed())
@@ -1819,8 +1904,8 @@ QTime frmMain::updateProgramEstimatedTime(QList<LineSegment*> lines)
     t.setHMS(0, 0, 0);
     t = t.addSecs(time);
 
-    ui->glwVisualizer->setSpendTime(QTime(0, 0, 0));
-    ui->glwVisualizer->setEstimatedTime(t);
+//    ui->glwVisualizer->setSpendTime(QTime(0, 0, 0));
+//    ui->glwVisualizer->setEstimatedTime(t);
 
     return t;
 }
@@ -1833,7 +1918,7 @@ void frmMain::clearTable()
 
 void frmMain::on_cmdFit_clicked()
 {
-    ui->glwVisualizer->fitDrawable(m_currentDrawer);
+//    ui->glwVisualizer->fitDrawable(m_currentDrawer);
 }
 
 void frmMain::on_cmdFileSend_clicked()
@@ -1891,7 +1976,7 @@ void frmMain::onActSendFromLineTriggered()
 
         QStringList commands;
 
-        commands.append(QString("M3 S%1").arg(qMax<double>(lastSegment->getSpindleSpeed(), ui->slbSpindle->value())));
+//        commands.append(QString("M3 S%1").arg(qMax<double>(lastSegment->getSpindleSpeed(), ui->slbSpindle->value())));
 
         commands.append(QString("G21 G90 G0 X%1 Y%2")
                         .arg(firstSegment->getStart().x())
@@ -1948,7 +2033,7 @@ void frmMain::onActSendFromLineTriggered()
         m_currentModel->data()[i].response = QString();
     }
     ui->tblProgram->setUpdatesEnabled(true);
-    ui->glwVisualizer->setSpendTime(QTime(0, 0, 0));
+//    ui->glwVisualizer->setSpendTime(QTime(0, 0, 0));
 
     m_startTime.start();
 
@@ -1983,7 +2068,7 @@ void frmMain::on_cmdFileAbort_clicked()
 {
     m_aborting = true;
     if (!ui->chkTestMode->isChecked()) {
-        m_serialPort.write("!");
+        m_serialPort_cnc.write("!");
     } else {
         grblReset();
     }
@@ -1991,8 +2076,8 @@ void frmMain::on_cmdFileAbort_clicked()
 
 void frmMain::storeParserState()
 {    
-    m_storedParserStatus = ui->glwVisualizer->parserStatus().remove(
-                QRegExp("GC:|\\[|\\]|G[01234]\\s|M[0345]+\\s|\\sF[\\d\\.]+|\\sS[\\d\\.]+"));
+//    m_storedParserStatus = ui->glwVisualizer->parserStatus().remove(
+//                QRegExp("GC:|\\[|\\]|G[01234]\\s|M[0345]+\\s|\\sF[\\d\\.]+|\\sS[\\d\\.]+"));
 }
 
 void frmMain::restoreParserState()
@@ -2161,11 +2246,11 @@ void frmMain::on_actServiceSettings_triggered()
         qDebug() << "Applying settings";
         qDebug() << "Port:" << m_settings->port() << "Baud:" << m_settings->baud();
 
-        if (m_settings->port() != "" && (m_settings->port() != m_serialPort.portName() ||
-                                           m_settings->baud() != m_serialPort.baudRate())) {
-            if (m_serialPort.isOpen()) m_serialPort.close();
-            m_serialPort.setPortName(m_settings->port());
-            m_serialPort.setBaudRate(m_settings->baud());
+        if (m_settings->port() != "" && (m_settings->port() != m_serialPort_cnc.portName() ||
+                                           m_settings->baud() != m_serialPort_cnc.baudRate())) {
+            if (m_serialPort_cnc.isOpen()) m_serialPort_cnc.close();
+            m_serialPort_cnc.setPortName(m_settings->port());
+            m_serialPort_cnc.setBaudRate(m_settings->baud());
             openPort();
         }
 
@@ -2191,31 +2276,31 @@ void frmMain::applySettings() {
     m_heightMapBorderDrawer.setLineWidth(m_settings->lineWidth());
     m_heightMapGridDrawer.setLineWidth(0.1);
     m_heightMapInterpolationDrawer.setLineWidth(m_settings->lineWidth());
-    ui->glwVisualizer->setLineWidth(m_settings->lineWidth());
-    m_timerStateQuery.setInterval(m_settings->queryStateTime());
+//    ui->glwVisualizer->setLineWidth(m_settings->lineWidth());
+    m_timerStateQuery_cnc.setInterval(m_settings->queryStateTime());
 
     m_toolDrawer.setToolAngle(m_settings->toolType() == 0 ? 180 : m_settings->toolAngle());
     m_toolDrawer.setColor(m_settings->colors("Tool"));
     m_toolDrawer.update();
 
-    ui->glwVisualizer->setAntialiasing(m_settings->antialiasing());
-    ui->glwVisualizer->setMsaa(m_settings->msaa());
-    ui->glwVisualizer->setZBuffer(m_settings->zBuffer());
-    ui->glwVisualizer->setVsync(m_settings->vsync());
-    ui->glwVisualizer->setFps(m_settings->fps());
-    ui->glwVisualizer->setColorBackground(m_settings->colors("VisualizerBackground"));
-    ui->glwVisualizer->setColorText(m_settings->colors("VisualizerText"));
+//    ui->glwVisualizer->setAntialiasing(m_settings->antialiasing());
+//    ui->glwVisualizer->setMsaa(m_settings->msaa());
+//    ui->glwVisualizer->setZBuffer(m_settings->zBuffer());
+//    ui->glwVisualizer->setVsync(m_settings->vsync());
+//    ui->glwVisualizer->setFps(m_settings->fps());
+//    ui->glwVisualizer->setColorBackground(m_settings->colors("VisualizerBackground"));
+//    ui->glwVisualizer->setColorText(m_settings->colors("VisualizerText"));
 
-    ui->slbSpindle->setMinimum(m_settings->spindleSpeedMin());
-    ui->slbSpindle->setMaximum(m_settings->spindleSpeedMax());
+//    ui->slbSpindle->setMinimum(m_settings->spindleSpeedMin());
+//    ui->slbSpindle->setMaximum(m_settings->spindleSpeedMax());
 
     ui->scrollArea->setVisible(m_settings->panelHeightmap() || m_settings->panelOverriding()
                                || m_settings->panelJog() || m_settings->panelSpindle());
 
-    ui->grpUserCommands->setVisible(m_settings->panelUserCommands());
-    ui->grpHeightMap->setVisible(m_settings->panelHeightmap());
-    ui->grpSpindle->setVisible(m_settings->panelSpindle());
-    ui->grpOverriding->setVisible(m_settings->panelOverriding());
+//    ui->grpUserCommands->setVisible(m_settings->panelUserCommands());
+//    ui->grpHeightMap->setVisible(m_settings->panelHeightmap());
+//    ui->grpSpindle->setVisible(m_settings->panelSpindle());
+//    ui->grpOverriding->setVisible(m_settings->panelOverriding());
     ui->grpJog->setVisible(m_settings->panelJog());
 
     ui->cboCommand->setAutoCompletion(m_settings->autoCompletion());
@@ -2250,24 +2335,24 @@ void frmMain::applySettings() {
     normal.setHsv(base.hue(), base.saturation(), base.value() + (light ? -NORMALSHIFT : NORMALSHIFT));
     highlight.setHsv(base.hue(), base.saturation(), base.value() + (light ? -HIGHLIGHTSHIFT : HIGHLIGHTSHIFT));
 
-    ui->glwVisualizer->setStyleSheet(QString("QToolButton {border: 1px solid %1; \
-                background-color: %3} QToolButton:hover {border: 1px solid %2;}")
-                .arg(normal.name()).arg(highlight.name())
-                .arg(base.name()));
+//    ui->glwVisualizer->setStyleSheet(QString("QToolButton {border: 1px solid %1; \
+//                background-color: %3} QToolButton:hover {border: 1px solid %2;}")
+//                .arg(normal.name()).arg(highlight.name())
+//                .arg(base.name()));
 
-    ui->cmdFit->setIcon(QIcon(":/images/fit_1.png"));
-    ui->cmdIsometric->setIcon(QIcon(":/images/cube.png"));
-    ui->cmdFront->setIcon(QIcon(":/images/cubeFront.png"));
-    ui->cmdLeft->setIcon(QIcon(":/images/cubeLeft.png"));
-    ui->cmdTop->setIcon(QIcon(":/images/cubeTop.png"));
+//    ui->cmdFit->setIcon(QIcon(":/images/fit_1.png"));
+//    ui->cmdIsometric->setIcon(QIcon(":/images/cube.png"));
+//    ui->cmdFront->setIcon(QIcon(":/images/cubeFront.png"));
+//    ui->cmdLeft->setIcon(QIcon(":/images/cubeLeft.png"));
+//    ui->cmdTop->setIcon(QIcon(":/images/cubeTop.png"));
 
-    if (!light) {
-        Util::invertButtonIconColors(ui->cmdFit);
-        Util::invertButtonIconColors(ui->cmdIsometric);
-        Util::invertButtonIconColors(ui->cmdFront);
-        Util::invertButtonIconColors(ui->cmdLeft);
-        Util::invertButtonIconColors(ui->cmdTop);
-    }
+//    if (!light) {
+//        Util::invertButtonIconColors(ui->cmdFit);
+//        Util::invertButtonIconColors(ui->cmdIsometric);
+//        Util::invertButtonIconColors(ui->cmdFront);
+//        Util::invertButtonIconColors(ui->cmdLeft);
+//        Util::invertButtonIconColors(ui->cmdTop);
+//    }
 
     ui->cboCommand->setMinimumHeight(ui->cboCommand->height());
     ui->cmdClearConsole->setFixedHeight(ui->cboCommand->height());
@@ -2339,7 +2424,7 @@ void frmMain::updateParser()
 
     updateProgramEstimatedTime(parser->getLinesFromParser(&gp, m_settings->arcPrecision(), m_settings->arcDegreeMode()));
     m_currentDrawer->update();
-    ui->glwVisualizer->updateExtremes(m_currentDrawer);
+//    ui->glwVisualizer->updateExtremes(m_currentDrawer);
     updateControlsState();
 
     if (m_currentModel == &m_programModel) m_fileChanged = true;
@@ -2438,23 +2523,23 @@ void frmMain::on_cmdSafePosition_clicked()
 
 void frmMain::on_cmdSpindle_toggled(bool checked)
 {
-    ui->grpSpindle->setProperty("overrided", checked);
-    style()->unpolish(ui->grpSpindle);
-    ui->grpSpindle->ensurePolished();
+//    ui->grpSpindle->setProperty("overrided", checked);
+//    style()->unpolish(ui->grpSpindle);
+//    ui->grpSpindle->ensurePolished();
 
-    if (checked) {
-        if (!ui->grpSpindle->isChecked()) ui->grpSpindle->setTitle(tr("Spindle") + QString(tr(" (%1)")).arg(ui->slbSpindle->value()));
-    } else {
-        ui->grpSpindle->setTitle(tr("Spindle"));
-    }
+//    if (checked) {
+//        if (!ui->grpSpindle->isChecked()) ui->grpSpindle->setTitle(tr("Spindle") + QString(tr(" (%1)")).arg(ui->slbSpindle->value()));
+//    } else {
+//        ui->grpSpindle->setTitle(tr("Spindle"));
+//    }
 }
 
 void frmMain::on_cmdSpindle_clicked(bool checked)
 {
     if (ui->cmdFilePause->isChecked()) {
-        m_serialPort.write(QByteArray(1, char(0x9e)));
+        m_serialPort_cnc.write(QByteArray(1, char(0x9e)));
     } else {
-        sendCommand(checked ? QString("M3 S%1").arg(ui->slbSpindle->value()) : "M5", -1, m_settings->showUICommands());
+//        sendCommand(checked ? QString("M3 S%1").arg(ui->slbSpindle->value()) : "M5", -1, m_settings->showUICommands());
     }
 }
 
@@ -2472,7 +2557,7 @@ void frmMain::on_chkTestMode_clicked(bool checked)
 
 void frmMain::on_cmdFilePause_clicked(bool checked)
 {
-    m_serialPort.write(checked ? "!" : "~");
+    m_serialPort_cnc.write(checked ? "!" : "~");
 }
 
 void frmMain::on_cmdFileReset_clicked()
@@ -2514,12 +2599,12 @@ void frmMain::on_cmdFileReset_clicked()
         ui->tblProgram->clearSelection();
         ui->tblProgram->selectRow(0);
 
-        ui->glwVisualizer->setSpendTime(QTime(0, 0, 0));
+//        ui->glwVisualizer->setSpendTime(QTime(0, 0, 0));
     } else {
-        ui->txtHeightMapGridX->setEnabled(true);
-        ui->txtHeightMapGridY->setEnabled(true);
-        ui->txtHeightMapGridZBottom->setEnabled(true);
-        ui->txtHeightMapGridZTop->setEnabled(true);
+//        ui->txtHeightMapGridX->setEnabled(true);
+//        ui->txtHeightMapGridY->setEnabled(true);
+//        ui->txtHeightMapGridZBottom->setEnabled(true);
+//        ui->txtHeightMapGridZTop->setEnabled(true);
 
         delete m_heightMapInterpolationDrawer.data();
         m_heightMapInterpolationDrawer.setData(NULL);
@@ -2549,14 +2634,14 @@ void frmMain::on_actFileNew_triggered()
         // Reset code drawer
         m_codeDrawer->update();
         m_currentDrawer = m_codeDrawer;
-        ui->glwVisualizer->fitDrawable();
+//        ui->glwVisualizer->fitDrawable();
         updateProgramEstimatedTime(QList<LineSegment*>());
 
         m_programFileName = "";
-        ui->chkHeightMapUse->setChecked(false);
-        ui->grpHeightMap->setProperty("overrided", false);
-        style()->unpolish(ui->grpHeightMap);
-        ui->grpHeightMap->ensurePolished();
+//        ui->chkHeightMapUse->setChecked(false);
+//        ui->grpHeightMap->setProperty("overrided", false);
+//        style()->unpolish(ui->grpHeightMap);
+//        ui->grpHeightMap->ensurePolished();
 
         // Reset tableview
         QByteArray headerState = ui->tblProgram->horizontalHeader()->saveState();
@@ -2578,7 +2663,7 @@ void frmMain::on_actFileNew_triggered()
     } else {
         m_heightMapModel.clear();
         on_cmdFileReset_clicked();
-        ui->txtHeightMap->setText(tr("Untitled"));
+//        ui->txtHeightMap->setText(tr("Untitled"));
         m_heightMapFileName.clear();
 
         updateHeightMapBorderDrawer();
@@ -2643,7 +2728,7 @@ void frmMain::on_actFileSaveAs_triggered()
         QString fileName = (QFileDialog::getSaveFileName(this, tr("Save file as"), m_lastFolder, tr("Heightmap files (*.map)")));
 
         if (!fileName.isEmpty()) if (saveHeightMap(fileName)) {
-            ui->txtHeightMap->setText(fileName.mid(fileName.lastIndexOf("/") + 1));
+//            ui->txtHeightMap->setText(fileName.mid(fileName.lastIndexOf("/") + 1));
             m_heightMapFileName = fileName;
             m_heightMapChanged = false;
 
@@ -2671,22 +2756,22 @@ void frmMain::on_actFileSave_triggered()
 
 void frmMain::on_cmdTop_clicked()
 {
-    ui->glwVisualizer->setTopView();
+//    ui->glwVisualizer->setTopView();
 }
 
 void frmMain::on_cmdFront_clicked()
 {
-    ui->glwVisualizer->setFrontView();
+//    ui->glwVisualizer->setFrontView();
 }
 
 void frmMain::on_cmdLeft_clicked()
 {
-    ui->glwVisualizer->setLeftView();
+//    ui->glwVisualizer->setLeftView();
 }
 
 void frmMain::on_cmdIsometric_clicked()
 {
-    ui->glwVisualizer->setIsometricView();
+//    ui->glwVisualizer->setIsometricView();
 }
 
 void frmMain::on_actAbout_triggered()
@@ -2746,6 +2831,7 @@ QString frmMain::feedOverride(QString command)
 
 void frmMain::on_grpOverriding_toggled(bool checked)
 {
+    /*
     if (checked) {
         ui->grpOverriding->setTitle(tr("Overriding"));
     } else if (ui->slbFeedOverride->isChecked() | ui->slbRapidOverride->isChecked() | ui->slbSpindleOverride->isChecked()) {
@@ -2757,24 +2843,25 @@ void frmMain::on_grpOverriding_toggled(bool checked)
     updateLayouts();
 
     ui->widgetFeed->setVisible(checked);
+    */
 }
 
 void frmMain::on_grpSpindle_toggled(bool checked)
 {
-    if (checked) {
-        ui->grpSpindle->setTitle(tr("Spindle"));
-    } else if (ui->cmdSpindle->isChecked()) {
-//        ui->grpSpindle->setTitle(tr("Spindle") + QString(tr(" (%1)")).arg(ui->txtSpindleSpeed->text()));
-        ui->grpSpindle->setTitle(tr("Spindle") + QString(tr(" (%1)")).arg(ui->slbSpindle->value()));
-    }
+//    if (checked) {
+////        ui->grpSpindle->setTitle(tr("Spindle"));
+//    } else if (ui->cmdSpindle->isChecked()) {
+////        ui->grpSpindle->setTitle(tr("Spindle") + QString(tr(" (%1)")).arg(ui->txtSpindleSpeed->text()));
+////        ui->grpSpindle->setTitle(tr("Spindle") + QString(tr(" (%1)")).arg(ui->slbSpindle->value()));
+//    }
     updateLayouts();
 
-    ui->widgetSpindle->setVisible(checked);
+//    ui->widgetSpindle->setVisible(checked);
 }
 
 void frmMain::on_grpUserCommands_toggled(bool checked)
 {
-    ui->widgetUserCommands->setVisible(checked);
+//    ui->widgetUserCommands->setVisible(checked);
 }
 
 bool frmMain::eventFilter(QObject *obj, QEvent *event)
@@ -2829,11 +2916,11 @@ bool frmMain::eventFilter(QObject *obj, QEvent *event)
                 } else if (keyEvent->key() == Qt::Key_5) {
                     on_cmdStop_clicked();
                 } else if (keyEvent->key() == Qt::Key_0) {
-                    on_cmdSpindle_clicked(!ui->cmdSpindle->isChecked());
+//                    on_cmdSpindle_clicked(!ui->cmdSpindle->isChecked());
                 } else if (keyEvent->key() == Qt::Key_Asterisk) {
-                    ui->slbSpindle->setSliderPosition(ui->slbSpindle->sliderPosition() + 1);
+//                    ui->slbSpindle->setSliderPosition(ui->slbSpindle->sliderPosition() + 1);
                 } else if (keyEvent->key() == Qt::Key_Slash) {
-                    ui->slbSpindle->setSliderPosition(ui->slbSpindle->sliderPosition() - 1);
+//                    ui->slbSpindle->setSliderPosition(ui->slbSpindle->sliderPosition() - 1);
                 }
             }
 
@@ -3067,17 +3154,17 @@ double frmMain::toMetric(double value)
 
 void frmMain::on_grpHeightMap_toggled(bool arg1)
 {
-    ui->widgetHeightMap->setVisible(arg1);
+//    ui->widgetHeightMap->setVisible(arg1);
 }
 
 QRectF frmMain::borderRectFromTextboxes()
 {
     QRectF rect;
 
-    rect.setX(ui->txtHeightMapBorderX->value());
-    rect.setY(ui->txtHeightMapBorderY->value());
-    rect.setWidth(ui->txtHeightMapBorderWidth->value());
-    rect.setHeight(ui->txtHeightMapBorderHeight->value());
+//    rect.setX(ui->txtHeightMapBorderX->value());
+//    rect.setY(ui->txtHeightMapBorderY->value());
+//    rect.setWidth(ui->txtHeightMapBorderWidth->value());
+//    rect.setHeight(ui->txtHeightMapBorderHeight->value());
 
     return rect;
 }
@@ -3130,17 +3217,17 @@ bool frmMain::updateHeightMapGrid()
     // Update grid drawer
     QRectF borderRect = borderRectFromTextboxes();
     m_heightMapGridDrawer.setBorderRect(borderRect);
-    m_heightMapGridDrawer.setGridSize(QPointF(ui->txtHeightMapGridX->value(), ui->txtHeightMapGridY->value()));
-    m_heightMapGridDrawer.setZBottom(ui->txtHeightMapGridZBottom->value());
-    m_heightMapGridDrawer.setZTop(ui->txtHeightMapGridZTop->value());
+//    m_heightMapGridDrawer.setGridSize(QPointF(ui->txtHeightMapGridX->value(), ui->txtHeightMapGridY->value()));
+//    m_heightMapGridDrawer.setZBottom(ui->txtHeightMapGridZBottom->value());
+//    m_heightMapGridDrawer.setZTop(ui->txtHeightMapGridZTop->value());
 
     // Reset model
 //    int gridPointsX = trunc(borderRect.width() / ui->txtHeightMapGridX->value()) + 1;
 //    int gridPointsY = trunc(borderRect.height() / ui->txtHeightMapGridY->value()) + 1;
-    int gridPointsX = ui->txtHeightMapGridX->value();
-    int gridPointsY = ui->txtHeightMapGridY->value();
+//    int gridPointsX = ui->txtHeightMapGridX->value();
+//    int gridPointsY = ui->txtHeightMapGridY->value();
 
-    m_heightMapModel.resize(gridPointsX, gridPointsY);
+//    m_heightMapModel.resize(gridPointsX, gridPointsY);
     ui->tblHeightMap->setModel(NULL);
     ui->tblHeightMap->setModel(&m_heightMapModel);
     resizeTableHeightMapSections();
@@ -3149,8 +3236,8 @@ bool frmMain::updateHeightMapGrid()
     updateHeightMapInterpolationDrawer(true);
 
     // Generate probe program
-    double gridStepX = gridPointsX > 1 ? borderRect.width() / (gridPointsX - 1) : 0;
-    double gridStepY = gridPointsY > 1 ? borderRect.height() / (gridPointsY - 1) : 0;
+//    double gridStepX = gridPointsX > 1 ? borderRect.width() / (gridPointsX - 1) : 0;
+//    double gridStepY = gridPointsY > 1 ? borderRect.height() / (gridPointsY - 1) : 0;
 
     qDebug() << "generating probe program";
 
@@ -3158,29 +3245,29 @@ bool frmMain::updateHeightMapGrid()
     m_probeModel.clear();
     m_probeModel.insertRow(0);
 
-    m_probeModel.setData(m_probeModel.index(m_probeModel.rowCount() - 1, 1), QString("G21G90F%1G0Z%2").
-                         arg(m_settings->heightmapProbingFeed()).arg(ui->txtHeightMapGridZTop->value()));
+//    m_probeModel.setData(m_probeModel.index(m_probeModel.rowCount() - 1, 1), QString("G21G90F%1G0Z%2").
+//                         arg(m_settings->heightmapProbingFeed()).arg(ui->txtHeightMapGridZTop->value()));
     m_probeModel.setData(m_probeModel.index(m_probeModel.rowCount() - 1, 1), QString("G0X0Y0"));
 //                         .arg(ui->txtHeightMapGridZTop->value()));
-    m_probeModel.setData(m_probeModel.index(m_probeModel.rowCount() - 1, 1), QString("G38.2Z%1")
-                         .arg(ui->txtHeightMapGridZBottom->value()));
-    m_probeModel.setData(m_probeModel.index(m_probeModel.rowCount() - 1, 1), QString("G0Z%1")
-                         .arg(ui->txtHeightMapGridZTop->value()));
+//    m_probeModel.setData(m_probeModel.index(m_probeModel.rowCount() - 1, 1), QString("G38.2Z%1")
+//                         .arg(ui->txtHeightMapGridZBottom->value()));
+//    m_probeModel.setData(m_probeModel.index(m_probeModel.rowCount() - 1, 1), QString("G0Z%1")
+//                         .arg(ui->txtHeightMapGridZTop->value()));
 
     double x, y;
 
-    for (int i = 0; i < gridPointsY; i++) {
-        y = borderRect.top() + gridStepY * i;
-        for (int j = 0; j < gridPointsX; j++) {
-            x = borderRect.left() + gridStepX * (i % 2 ? gridPointsX - 1 - j : j);
-            m_probeModel.setData(m_probeModel.index(m_probeModel.rowCount() - 1, 1), QString("G0X%1Y%2")
-                                 .arg(x, 0, 'f', 3).arg(y, 0, 'f', 3));
-            m_probeModel.setData(m_probeModel.index(m_probeModel.rowCount() - 1, 1), QString("G38.2Z%1")
-                                 .arg(ui->txtHeightMapGridZBottom->value()));
-            m_probeModel.setData(m_probeModel.index(m_probeModel.rowCount() - 1, 1), QString("G0Z%1")
-                                 .arg(ui->txtHeightMapGridZTop->value()));
-        }
-    }
+//    for (int i = 0; i < gridPointsY; i++) {
+//        y = borderRect.top() + gridStepY * i;
+//        for (int j = 0; j < gridPointsX; j++) {
+//            x = borderRect.left() + gridStepX * (i % 2 ? gridPointsX - 1 - j : j);
+//            m_probeModel.setData(m_probeModel.index(m_probeModel.rowCount() - 1, 1), QString("G0X%1Y%2")
+//                                 .arg(x, 0, 'f', 3).arg(y, 0, 'f', 3));
+////            m_probeModel.setData(m_probeModel.index(m_probeModel.rowCount() - 1, 1), QString("G38.2Z%1")
+////                                 .arg(ui->txtHeightMapGridZBottom->value()));
+////            m_probeModel.setData(m_probeModel.index(m_probeModel.rowCount() - 1, 1), QString("G0Z%1")
+////                                 .arg(ui->txtHeightMapGridZTop->value()));
+//        }
+//    }
 
     m_programLoading = false;
 
@@ -3201,23 +3288,23 @@ void frmMain::updateHeightMapInterpolationDrawer(bool reset)
 
     QVector<QVector<double>> *interpolationData = new QVector<QVector<double>>;
 
-    int interpolationPointsX = ui->txtHeightMapInterpolationStepX->value();// * (ui->txtHeightMapGridX->value() - 1) + 1;
-    int interpolationPointsY = ui->txtHeightMapInterpolationStepY->value();// * (ui->txtHeightMapGridY->value() - 1) + 1;
+//    int interpolationPointsX = ui->txtHeightMapInterpolationStepX->value();// * (ui->txtHeightMapGridX->value() - 1) + 1;
+//    int interpolationPointsY = ui->txtHeightMapInterpolationStepY->value();// * (ui->txtHeightMapGridY->value() - 1) + 1;
 
-    double interpolationStepX = interpolationPointsX > 1 ? borderRect.width() / (interpolationPointsX - 1) : 0;
-    double interpolationStepY = interpolationPointsY > 1 ? borderRect.height() / (interpolationPointsY - 1) : 0;
+//    double interpolationStepX = interpolationPointsX > 1 ? borderRect.width() / (interpolationPointsX - 1) : 0;
+//    double interpolationStepY = interpolationPointsY > 1 ? borderRect.height() / (interpolationPointsY - 1) : 0;
 
-    for (int i = 0; i < interpolationPointsY; i++) {
-        QVector<double> row;
-        for (int j = 0; j < interpolationPointsX; j++) {
+//    for (int i = 0; i < interpolationPointsY; i++) {
+//        QVector<double> row;
+//        for (int j = 0; j < interpolationPointsX; j++) {
 
-            double x = interpolationStepX * j + borderRect.x();
-            double y = interpolationStepY * i + borderRect.y();
+//            double x = interpolationStepX * j + borderRect.x();
+//            double y = interpolationStepY * i + borderRect.y();
 
-            row.append(reset ? qQNaN() : Interpolation::bicubicInterpolate(borderRect, &m_heightMapModel, x, y));
-        }
-        interpolationData->append(row);
-    }
+//            row.append(reset ? qQNaN() : Interpolation::bicubicInterpolate(borderRect, &m_heightMapModel, x, y));
+//        }
+//        interpolationData->append(row);
+//    }
 
     if (m_heightMapInterpolationDrawer.data() != NULL) {
         delete m_heightMapInterpolationDrawer.data();
@@ -3303,10 +3390,10 @@ void frmMain::on_cmdHeightMapMode_toggled(bool checked)
     m_lastDrawnLineIndex = 0;
 
     // Reset/restore g-code program modification on edit mode enter/exit
-    if (ui->chkHeightMapUse->isChecked()) {
-        on_chkHeightMapUse_clicked(!checked); // Update gcode program parser
-//        m_codeDrawer->updateData(); // Force update data to properly shadowing
-    }
+//    if (ui->chkHeightMapUse->isChecked()) {
+//        on_chkHeightMapUse_clicked(!checked); // Update gcode program parser
+////        m_codeDrawer->updateData(); // Force update data to properly shadowing
+//    }
 
     if (checked) {
         ui->tblProgram->setModel(&m_probeModel);
@@ -3316,7 +3403,7 @@ void frmMain::on_cmdHeightMapMode_toggled(bool checked)
         updateParser();  // Update probe program parser
     } else {
         m_probeParser.reset();
-        if (!ui->chkHeightMapUse->isChecked()) {
+        /*if (!ui->chkHeightMapUse->isChecked()) {
             ui->tblProgram->setModel(&m_programModel);
             connect(ui->tblProgram->selectionModel(), SIGNAL(currentChanged(QModelIndex,QModelIndex)), this, SLOT(onTableCurrentChanged(QModelIndex,QModelIndex)));
             ui->tblProgram->selectRow(0);
@@ -3326,10 +3413,10 @@ void frmMain::on_cmdHeightMapMode_toggled(bool checked)
             m_currentDrawer = m_codeDrawer;
 
             if (!ui->chkHeightMapUse->isChecked()) {
-                ui->glwVisualizer->updateExtremes(m_codeDrawer);
+                //ui->glwVisualizer->updateExtremes(m_codeDrawer);
                 updateProgramEstimatedTime(m_currentDrawer->viewParser()->getLineSegmentList());
             }
-        }
+        }*/
     }
 
     // Shadow toolpath
@@ -3342,7 +3429,7 @@ void frmMain::on_cmdHeightMapMode_toggled(bool checked)
     }
     // Update only vertex color.
     // If chkHeightMapUse was checked codeDrawer updated via updateParser
-    if (!ui->chkHeightMapUse->isChecked()) m_codeDrawer->update(indexes);
+//    if (!ui->chkHeightMapUse->isChecked()) m_codeDrawer->update(indexes);
 
     updateRecentFilesMenu();
     updateControlsState();
@@ -3357,17 +3444,17 @@ bool frmMain::saveHeightMap(QString fileName)
     if (!file.open(QIODevice::WriteOnly)) return false;
 
     QTextStream textStream(&file);
-    textStream << ui->txtHeightMapBorderX->text() << ";"
-               << ui->txtHeightMapBorderY->text() << ";"
-               << ui->txtHeightMapBorderWidth->text() << ";"
-               << ui->txtHeightMapBorderHeight->text() << "\r\n";
-    textStream << ui->txtHeightMapGridX->text() << ";"
-               << ui->txtHeightMapGridY->text() << ";"
-               << ui->txtHeightMapGridZBottom->text() << ";"
-               << ui->txtHeightMapGridZTop->text() << "\r\n";
-    textStream << ui->cboHeightMapInterpolationType->currentIndex() << ";"
-               << ui->txtHeightMapInterpolationStepX->text() << ";"
-                << ui->txtHeightMapInterpolationStepY->text() << "\r\n";
+//    textStream << ui->txtHeightMapBorderX->text() << ";"
+//               << ui->txtHeightMapBorderY->text() << ";"
+//               << ui->txtHeightMapBorderWidth->text() << ";"
+//               << ui->txtHeightMapBorderHeight->text() << "\r\n";
+//    textStream << ui->txtHeightMapGridX->text() << ";"
+//               << ui->txtHeightMapGridY->text() << ";"
+//               << ui->txtHeightMapGridZBottom->text() << ";"
+//               << ui->txtHeightMapGridZTop->text() << "\r\n";
+//    textStream << ui->cboHeightMapInterpolationType->currentIndex() << ";"
+//               << ui->txtHeightMapInterpolationStepX->text() << ";"
+//                << ui->txtHeightMapInterpolationStepY->text() << "\r\n";
 
     for (int i = 0; i < m_heightMapModel.rowCount(); i++) {
         for (int j = 0; j < m_heightMapModel.columnCount(); j++) {
@@ -3396,27 +3483,27 @@ void frmMain::loadHeightMap(QString fileName)
     m_settingsLoading = true;
 
     // Storing previous values
-    ui->txtHeightMapBorderX->setValue(qQNaN());
-    ui->txtHeightMapBorderY->setValue(qQNaN());
-    ui->txtHeightMapBorderWidth->setValue(qQNaN());
-    ui->txtHeightMapBorderHeight->setValue(qQNaN());
+//    ui->txtHeightMapBorderX->setValue(qQNaN());
+//    ui->txtHeightMapBorderY->setValue(qQNaN());
+//    ui->txtHeightMapBorderWidth->setValue(qQNaN());
+//    ui->txtHeightMapBorderHeight->setValue(qQNaN());
 
-    ui->txtHeightMapGridX->setValue(qQNaN());
-    ui->txtHeightMapGridY->setValue(qQNaN());
-    ui->txtHeightMapGridZBottom->setValue(qQNaN());
-    ui->txtHeightMapGridZTop->setValue(qQNaN());
+//    ui->txtHeightMapGridX->setValue(qQNaN());
+//    ui->txtHeightMapGridY->setValue(qQNaN());
+//    ui->txtHeightMapGridZBottom->setValue(qQNaN());
+//    ui->txtHeightMapGridZTop->setValue(qQNaN());
 
     QList<QString> list = textStream.readLine().split(";");
-    ui->txtHeightMapBorderX->setValue(list[0].toDouble());
-    ui->txtHeightMapBorderY->setValue(list[1].toDouble());
-    ui->txtHeightMapBorderWidth->setValue(list[2].toDouble());
-    ui->txtHeightMapBorderHeight->setValue(list[3].toDouble());
+//    ui->txtHeightMapBorderX->setValue(list[0].toDouble());
+//    ui->txtHeightMapBorderY->setValue(list[1].toDouble());
+//    ui->txtHeightMapBorderWidth->setValue(list[2].toDouble());
+//    ui->txtHeightMapBorderHeight->setValue(list[3].toDouble());
 
-    list = textStream.readLine().split(";");
-    ui->txtHeightMapGridX->setValue(list[0].toDouble());
-    ui->txtHeightMapGridY->setValue(list[1].toDouble());
-    ui->txtHeightMapGridZBottom->setValue(list[2].toDouble());
-    ui->txtHeightMapGridZTop->setValue(list[3].toDouble());
+//    list = textStream.readLine().split(";");
+//    ui->txtHeightMapGridX->setValue(list[0].toDouble());
+//    ui->txtHeightMapGridY->setValue(list[1].toDouble());
+//    ui->txtHeightMapGridZBottom->setValue(list[2].toDouble());
+//    ui->txtHeightMapGridZTop->setValue(list[3].toDouble());
 
     m_settingsLoading = false;
 
@@ -3448,13 +3535,13 @@ void frmMain::loadHeightMap(QString fileName)
 
     file.close();
 
-    ui->txtHeightMap->setText(fileName.mid(fileName.lastIndexOf("/") + 1));
+//    ui->txtHeightMap->setText(fileName.mid(fileName.lastIndexOf("/") + 1));
     m_heightMapFileName = fileName;
     m_heightMapChanged = false;
 
-    ui->cboHeightMapInterpolationType->setCurrentIndex(list[0].toInt());
-    ui->txtHeightMapInterpolationStepX->setValue(list[1].toDouble());
-    ui->txtHeightMapInterpolationStepY->setValue(list[2].toDouble());
+//    ui->cboHeightMapInterpolationType->setCurrentIndex(list[0].toInt());
+//    ui->txtHeightMapInterpolationStepX->setValue(list[1].toDouble());
+//    ui->txtHeightMapInterpolationStepY->setValue(list[2].toDouble());
 
     updateHeightMapInterpolationDrawer();
 }
@@ -3479,12 +3566,12 @@ void frmMain::on_cmdHeightMapLoad_clicked()
         loadHeightMap(fileName);
 
         // If using heightmap
-        if (ui->chkHeightMapUse->isChecked() && !m_heightMapMode) {
+        /*if (ui->chkHeightMapUse->isChecked() && !m_heightMapMode) {
             // Restore original file
             on_chkHeightMapUse_clicked(false);
             // Apply heightmap
             on_chkHeightMapUse_clicked(true);
-        }
+        }*/
 
         updateRecentFilesMenu();
         updateControlsState(); // Enable 'cmdHeightMapMode' button
@@ -3731,7 +3818,7 @@ void frmMain::on_chkHeightMapUse_clicked(bool checked)
         connect(ui->tblProgram->selectionModel(), SIGNAL(currentChanged(QModelIndex,QModelIndex)), this, SLOT(onTableCurrentChanged(QModelIndex,QModelIndex)));
         ui->tblProgram->selectRow(0);
 
-        ui->chkHeightMapUse->setChecked(false);
+//        ui->chkHeightMapUse->setChecked(false);
 
         return;
     } else {                                        // Restore original program
@@ -3756,9 +3843,9 @@ void frmMain::on_chkHeightMapUse_clicked(bool checked)
     }
 
     // Update groupbox title
-    ui->grpHeightMap->setProperty("overrided", checked);
-    style()->unpolish(ui->grpHeightMap);
-    ui->grpHeightMap->ensurePolished();
+//    ui->grpHeightMap->setProperty("overrided", checked);
+//    style()->unpolish(ui->grpHeightMap);
+//    ui->grpHeightMap->ensurePolished();
 
     // Update menu
     ui->actFileSaveTransformedAs->setVisible(checked);
@@ -3770,8 +3857,8 @@ QList<LineSegment*> frmMain::subdivideSegment(LineSegment* segment)
 
     QRectF borderRect = borderRectFromTextboxes();
 
-    double interpolationStepX = borderRect.width() / (ui->txtHeightMapInterpolationStepX->value() - 1);
-    double interpolationStepY = borderRect.height() / (ui->txtHeightMapInterpolationStepY->value() - 1);
+//    double interpolationStepX = borderRect.width() / (ui->txtHeightMapInterpolationStepX->value() - 1);
+//    double interpolationStepY = borderRect.height() / (ui->txtHeightMapInterpolationStepY->value() - 1);
 
     double length;
 
@@ -3779,8 +3866,8 @@ QList<LineSegment*> frmMain::subdivideSegment(LineSegment* segment)
 
     if (qIsNaN(vec.length())) return QList<LineSegment*>();
 
-    if (fabs(vec.x()) / fabs(vec.y()) < interpolationStepX / interpolationStepY) length = interpolationStepY / (vec.y() / vec.length());
-    else length = interpolationStepX / (vec.x() / vec.length());
+//    if (fabs(vec.x()) / fabs(vec.y()) < interpolationStepX / interpolationStepY) length = interpolationStepY / (vec.y() / vec.length());
+//    else length = interpolationStepX / (vec.x() / vec.length());
 
     length = fabs(length);
 
@@ -3813,7 +3900,7 @@ QList<LineSegment*> frmMain::subdivideSegment(LineSegment* segment)
 
 void frmMain::on_cmdHeightMapCreate_clicked()
 {
-    ui->cmdHeightMapMode->setChecked(true);
+//    ui->cmdHeightMapMode->setChecked(true);
     on_actFileNew_triggered();
 }
 
@@ -3821,12 +3908,12 @@ void frmMain::on_cmdHeightMapBorderAuto_clicked()
 {
     QRectF rect = borderRectFromExtremes();
 
-    if (!qIsNaN(rect.width()) && !qIsNaN(rect.height())) {
-        ui->txtHeightMapBorderX->setValue(rect.x());
-        ui->txtHeightMapBorderY->setValue(rect.y());
-        ui->txtHeightMapBorderWidth->setValue(rect.width());
-        ui->txtHeightMapBorderHeight->setValue(rect.height());
-    }
+//    if (!qIsNaN(rect.width()) && !qIsNaN(rect.height())) {
+//        ui->txtHeightMapBorderX->setValue(rect.x());
+//        ui->txtHeightMapBorderY->setValue(rect.y());
+//        ui->txtHeightMapBorderWidth->setValue(rect.width());
+//        ui->txtHeightMapBorderHeight->setValue(rect.height());
+//    }
 }
 
 bool frmMain::compareCoordinates(double x, double y, double z)
@@ -3847,10 +3934,12 @@ void frmMain::onCmdUserClicked(bool checked)
 
 void frmMain::onOverridingToggled(bool checked)
 {
+    /*
     ui->grpOverriding->setProperty("overrided", ui->slbFeedOverride->isChecked()
                                    || ui->slbRapidOverride->isChecked() || ui->slbSpindleOverride->isChecked());
     style()->unpolish(ui->grpOverriding);
     ui->grpOverriding->ensurePolished();
+    */
 }
 
 void frmMain::updateOverride(SliderBox *slider, int value, char command)
@@ -3861,9 +3950,9 @@ void frmMain::updateOverride(SliderBox *slider, int value, char command)
     bool smallStep = abs(target - slider->currentValue()) < 10 || m_settings->queryStateTime() < 100;
 
     if (slider->currentValue() < target) {
-        m_serialPort.write(QByteArray(1, char(smallStep ? command + 2 : command)));
+        m_serialPort_cnc.write(QByteArray(1, char(smallStep ? command + 2 : command)));
     } else if (slider->currentValue() > target) {
-        m_serialPort.write(QByteArray(1, char(smallStep ? command + 3 : command + 1)));
+        m_serialPort_cnc.write(QByteArray(1, char(smallStep ? command + 3 : command + 1)));
     }
 }
 
@@ -3975,5 +4064,10 @@ void frmMain::on_cmdZMinus_released()
 void frmMain::on_cmdStop_clicked()
 {
     m_queue.clear();
-    m_serialPort.write(QByteArray(1, char(0x85)));
+    m_serialPort_cnc.write(QByteArray(1, char(0x85)));
+}
+
+void frmMain::on_dosing_button_inf_start_stop_clicked()
+{
+
 }
