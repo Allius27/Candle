@@ -990,8 +990,8 @@ void frmMain::onSerialPortReadyRead()
                     m_timerStateQuery_cnc.stop();
                     m_timerConnection_cnc.stop();
 
-//                    QMessageBox::information(this, qApp->applicationDisplayName(), tr("Job done.\nTime elapsed: %1")
-//                                             .arg(ui->glwVisualizer->spendTime().toString("hh:mm:ss")));
+                    QMessageBox::information(this, qApp->applicationDisplayName(), tr("Job done.\nTime elapsed: %1")
+                                             .arg(QTime::fromMSecsSinceStartOfDay(m_startTime.elapsed()).toString("mm:ss.zzz")));
 
                     m_timerStateQuery_cnc.setInterval(m_settings->queryStateTime());
                     m_timerConnection_cnc.start();
@@ -4077,18 +4077,15 @@ void frmMain::on_dosing_button_cells_check_clicked()
 {
     sendCommand(QString("G91"));
     sendCommand(QString("A") + ui->cells_straight->text());
-    sendCommand(QString("A-") + ui->cells_reverse->text());
+    sendCommand(QString("A") + QString::number(ui->cells_straight->value() - ui->cells_reverse->value()) );
 }
 
 void frmMain::on_dosing_button_palette_check_clicked()
 {
     sendCommand(QString("G91"));
     sendCommand(QString("A") + ui->palette_straight->text());
+    sendCommand(QString("A") + QString::number(ui->palette_straight->value() - ui->palette_reverse->value()) );
     sendCommand(QString("A-") + ui->palette_reverse->text());
-
-//    sendCommand(QString("G91") +
-//                QString("A") + ui->palette_straight->text() +
-//                QString("A") + ui->palette_reverse->text());
 }
 
 
@@ -4126,7 +4123,7 @@ void frmMain::dosing(QList<QString>& data, int height, bool isPalette)
         // заливаем палитру
 //      m_doser.start(true, straightTime2, reverseTime2, true, 0, 0);
         data.append("A" + ui->palette_straight->text() );
-        data.append("A-" + QString::number(ui->palette_straight->value() - ui->palette_reverse->value()));
+        data.append("A" + QString::number(ui->palette_straight->value() - ui->palette_reverse->value()));
 
     }
     else
@@ -4134,7 +4131,7 @@ void frmMain::dosing(QList<QString>& data, int height, bool isPalette)
         // заливаем ячейки
 //      m_doser.start(true, straightTime1, reverseTime1, true, 0, 0);
         data.append("A" + ui->cells_straight->text() );
-        data.append("A-" + QString::number(ui->cells_straight->value() - ui->cells_reverse->value()) );
+        data.append("A" + QString::number(ui->cells_straight->value() - ui->cells_reverse->value()) );
     }
 
     // поднимаем шприц
@@ -4187,7 +4184,7 @@ QList<QString> frmMain::fillPalette11()
 //                m_cnc.move("G0 X" + to_string(x_position) + " Y" + to_string(y_position));
 //                m_cnc.moveWithControl(x_position, y_position, std::nullopt);
                 data.append("X" + QString::number(x_position) + "Y" + QString::number(y_position));
-//                dosing(data, height, false);
+                dosing(data, height, false);
             }
         }
 
@@ -4199,7 +4196,7 @@ QList<QString> frmMain::fillPalette11()
 //        m_cnc.move("G0 X" + to_string(28 + offsetX * colomn) + " Y" + to_string(11 + y_col_value));
 //        m_cnc.moveWithControl(28 + offsetX * colomn, 11 + y_col_value, std::nullopt);
         data.append("X" + QString::number(x_position) + "Y" + QString::number(y_position));
-//        dosing(data, height, true);
+        dosing(data, height, true);
     };
 
     data.append("G90");
