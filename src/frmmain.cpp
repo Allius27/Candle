@@ -84,6 +84,9 @@ frmMain::frmMain(QWidget *parent) :
                        << "white"
                        << "black";
 
+    m_palettes_list    << "Palette 11"
+                       << "Palette 7";
+
     // Loading settings
     m_settingsFileName = qApp->applicationDirPath() + "/settings.ini";
     preloadSettings();
@@ -263,11 +266,11 @@ frmMain::frmMain(QWidget *parent) :
 
 
 // Setup serial port for grbl controller
-    m_serialPort_doser.setParity(QSerialPort::NoParity);
-    m_serialPort_doser.setDataBits(QSerialPort::Data8);
-    m_serialPort_doser.setFlowControl(QSerialPort::NoFlowControl);
-    m_serialPort_doser.setStopBits(QSerialPort::OneStop);
-    m_serialPort_doser.setBaudRate(QSerialPort::Baud9600);
+//    m_serialPort_doser.setParity(QSerialPort::NoParity);
+//    m_serialPort_doser.setDataBits(QSerialPort::Data8);
+//    m_serialPort_doser.setFlowControl(QSerialPort::NoFlowControl);
+//    m_serialPort_doser.setStopBits(QSerialPort::OneStop);
+//    m_serialPort_doser.setBaudRate(QSerialPort::Baud9600);
 
 
 //    if (m_settings->port() != "") {
@@ -276,7 +279,7 @@ frmMain::frmMain(QWidget *parent) :
 //    }
 
     connect(&m_serialPort_cnc, SIGNAL(error(QSerialPort::SerialPortError)), this, SLOT(onSerialPortCNCError(QSerialPort::SerialPortError)));
-    connect(&m_serialPort_doser, SIGNAL(error(QSerialPort::SerialPortError)), this, SLOT(onSerialPortDoserError(QSerialPort::SerialPortError)));
+//    connect(&m_serialPort_doser, SIGNAL(error(QSerialPort::SerialPortError)), this, SLOT(onSerialPortDoserError(QSerialPort::SerialPortError)));
 
 
     this->installEventFilter(this);
@@ -295,6 +298,9 @@ frmMain::frmMain(QWidget *parent) :
     if (qApp->arguments().count() > 1 && isGCodeFile(qApp->arguments().last())) {
         loadFile(qApp->arguments().last());
     }
+
+    ui->palette_list->addItems(m_palettes_list);
+    on_palette_list_activated(m_palettes_list.front());
 }
 
 frmMain::~frmMain()
@@ -773,22 +779,22 @@ void frmMain::openPort()
     }
 
 // doser
-    for ( const QSerialPortInfo& item: QSerialPortInfo::availablePorts() )
-    {
-        m_serialPort_doser.setPort(item);
-        m_serialPort_doser.open(QIODevice::ReadWrite);
-        m_serialPort_doser.write("H\n");
+//    for ( const QSerialPortInfo& item: QSerialPortInfo::availablePorts() )
+//    {
+//        m_serialPort_doser.setPort(item);
+//        m_serialPort_doser.open(QIODevice::ReadWrite);
+//        m_serialPort_doser.write("H\n");
 
-        QString reply = m_serialPort_doser.readAll();
-        while (m_serialPort_doser.waitForReadyRead(500))
-            reply += m_serialPort_doser.readAll();
+//        QString reply = m_serialPort_doser.readAll();
+//        while (m_serialPort_doser.waitForReadyRead(500))
+//            reply += m_serialPort_doser.readAll();
 
-        if ( reply.contains("H") )
-        {
-            // doser controller
-            break;
-        }
-    }
+//        if ( reply.contains("H") )
+//        {
+//            // doser controller
+//            break;
+//        }
+//    }
 }
 
 void frmMain::sendCommand( QString command, int tableIndex, bool showInConsole)
@@ -1443,21 +1449,21 @@ void frmMain::onSerialPortCNCError(QSerialPort::SerialPortError error)
     }
 }
 
-void frmMain::onSerialPortDoserError(QSerialPort::SerialPortError error)
-{
-    static QSerialPort::SerialPortError previousError;
+//void frmMain::onSerialPortDoserError(QSerialPort::SerialPortError error)
+//{
+//    static QSerialPort::SerialPortError previousError;
 
-    if (error != QSerialPort::NoError && error != previousError) {
-        previousError = error;
-        ui->doser_txtStatus->setText("Disconnected");
+//    if (error != QSerialPort::NoError && error != previousError) {
+//        previousError = error;
+//        ui->doser_txtStatus->setText("Disconnected");
 
-        if (m_serialPort_doser.isOpen()) {
-            m_serialPort_doser.close();
+//        if (m_serialPort_doser.isOpen()) {
+//            m_serialPort_doser.close();
 
-            disconnect(&m_serialPort_doser, SIGNAL(readyRead()));
-        }
-    }
-}
+//            disconnect(&m_serialPort_doser, SIGNAL(readyRead()));
+//        }
+//    }
+//}
 
 
 void frmMain::onTimerConnection()
@@ -4067,7 +4073,174 @@ void frmMain::on_cmdStop_clicked()
     m_serialPort_cnc.write(QByteArray(1, char(0x85)));
 }
 
-void frmMain::on_dosing_button_inf_start_stop_clicked()
+void frmMain::on_dosing_button_cells_check_clicked()
 {
+    sendCommand(QString("G91"));
+    sendCommand(QString("A") + ui->cells_straight->text());
+    sendCommand(QString("A-") + ui->cells_reverse->text());
+}
 
+void frmMain::on_dosing_button_palette_check_clicked()
+{
+    sendCommand(QString("G91"));
+    sendCommand(QString("A") + ui->palette_straight->text());
+    sendCommand(QString("A-") + ui->palette_reverse->text());
+
+//    sendCommand(QString("G91") +
+//                QString("A") + ui->palette_straight->text() +
+//                QString("A") + ui->palette_reverse->text());
+}
+
+
+void frmMain::on_palette_list_activated(const QString &arg1)
+{
+    if ( arg1 == "Palette 7" )
+    {
+        ui->cells_straight->setValue(-1);
+        ui->cells_reverse->setValue(-1);
+        ui->palette_straight->setValue(-1);
+        ui->palette_reverse->setValue(-1);
+    }
+
+    if (arg1 == "Palette 11")
+    {
+        ui->cells_straight->setValue(400);
+        ui->cells_reverse->setValue(500);
+        ui->palette_straight->setValue(600);
+        ui->palette_reverse->setValue(400);
+    }
+
+
+    fillTable(arg1);
+}
+
+void frmMain::dosing(QList<QString>& data, int height, bool isPalette)
+{
+    // опускаем шприц
+//    m_cnc.moveWithControl(std::nullopt, std::nullopt, 0);
+    data.append("Z0");
+
+    // TODO
+    if ( isPalette )
+    {
+        // заливаем палитру
+//      m_doser.start(true, straightTime2, reverseTime2, true, 0, 0);
+        data.append("A" + ui->palette_straight->text() );
+        data.append("A-" + QString::number(ui->palette_straight->value() - ui->palette_reverse->value()));
+
+    }
+    else
+    {
+        // заливаем ячейки
+//      m_doser.start(true, straightTime1, reverseTime1, true, 0, 0);
+        data.append("A" + ui->cells_straight->text() );
+        data.append("A-" + QString::number(ui->cells_straight->value() - ui->cells_reverse->value()) );
+    }
+
+    // поднимаем шприц
+//    m_cnc.moveWithControl(std::nullopt, std::nullopt, height);
+    data.append("Z" + QString::number(height));
+}
+
+QList<QString> frmMain::fillPalette11()
+{
+    QList<QString> data;
+
+    int cells_step = 7.5;
+    int height = 6;
+
+    int rows = 2;
+    int colomns = 3;
+
+    int offsetX = 54;
+    int offsetY = 54;
+
+    auto fill = [&](int colomn, int row)
+    {
+        // step up
+        int y_col_value = offsetY * row;
+
+        if ( colomn % 2 != 0 )
+        {
+            // step down
+            y_col_value = (rows - 1 - row) * offsetY;
+        }
+
+        // cells
+        for ( int x_step = 0; x_step < 2; x_step++ )
+        {
+            for ( int y_step = 0; y_step < 4; y_step++ )
+            {
+
+                // step up
+                int y_value = y_step * cells_step;
+
+                if ( x_step % 2 != 0 )
+                {
+                    // step down
+                    y_value = (3 - y_step) * cells_step;
+                }
+
+                int x_position = x_step * cells_step + offsetX * colomn;
+                int y_position = y_value + y_col_value;
+
+//                m_cnc.move("G0 X" + to_string(x_position) + " Y" + to_string(y_position));
+//                m_cnc.moveWithControl(x_position, y_position, std::nullopt);
+                data.append("X" + QString::number(x_position) + "Y" + QString::number(y_position));
+//                dosing(data, height, false);
+            }
+        }
+
+        // palette
+
+        int x_position = 28 + offsetX * colomn;
+        int y_position = 11 + y_col_value;
+
+//        m_cnc.move("G0 X" + to_string(28 + offsetX * colomn) + " Y" + to_string(11 + y_col_value));
+//        m_cnc.moveWithControl(28 + offsetX * colomn, 11 + y_col_value, std::nullopt);
+        data.append("X" + QString::number(x_position) + "Y" + QString::number(y_position));
+//        dosing(data, height, true);
+    };
+
+    data.append("G90");
+    data.append("G49");
+    data.append("X0Y0Z0");
+//    print()
+
+//    for col in range(0, colomns):
+//        for row in range(0, rows):
+//            fill(col,row)
+//            print()
+
+    for (int col = 0; col<colomns; col++)
+    {
+        for (int row = 0; row<rows; row++)
+        {
+            fill(col,row);
+        }
+    }
+
+    data.append("X0Y0Z" + QString::number(height));
+
+    return data;
+
+//    m_cnc.moveWithControl(0,0,10);
+}
+
+void frmMain::fillTable(const QString &arg1)
+{
+    on_cmdFileReset_clicked();
+
+    QList<QString> data;
+
+    if ( arg1 == "Palette 7" )
+    {
+        data.append("testStr1");
+        data.append("testStr2");
+    }
+
+    if (arg1 == "Palette 11")
+        data = fillPalette11();
+
+    loadFile(data);
 }

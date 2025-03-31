@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>952</width>
-    <height>847</height>
+    <height>769</height>
    </rect>
   </property>
   <property name="acceptDrops">
@@ -197,7 +197,7 @@ QSlider::handle:horizontal:hover {
                 <number>15000</number>
                </property>
                <property name="singleStep">
-                <number>50</number>
+                <number>1</number>
                </property>
               </widget>
              </item>
@@ -218,7 +218,7 @@ QSlider::handle:horizontal:hover {
                 <number>15000</number>
                </property>
                <property name="singleStep">
-                <number>50</number>
+                <number>1</number>
                </property>
               </widget>
              </item>
@@ -251,7 +251,7 @@ QSlider::handle:horizontal:hover {
                 <number>15000</number>
                </property>
                <property name="singleStep">
-                <number>50</number>
+                <number>1</number>
                </property>
               </widget>
              </item>
@@ -272,7 +272,7 @@ QSlider::handle:horizontal:hover {
                 <number>15000</number>
                </property>
                <property name="singleStep">
-                <number>50</number>
+                <number>1</number>
                </property>
               </widget>
              </item>
@@ -280,20 +280,20 @@ QSlider::handle:horizontal:hover {
            </item>
           </layout>
          </widget>
-         <widget class="QPushButton" name="dosing_button_inf_start_stop">
+         <widget class="QPushButton" name="dosing_button_cells_check">
           <property name="geometry">
            <rect>
             <x>300</x>
             <y>70</y>
-            <width>121</width>
-            <height>51</height>
+            <width>111</width>
+            <height>61</height>
            </rect>
           </property>
           <property name="text">
-           <string>Старт</string>
+           <string>Ячейки</string>
           </property>
          </widget>
-         <widget class="QComboBox" name="comboBox">
+         <widget class="QComboBox" name="palette_list">
           <property name="geometry">
            <rect>
             <x>10</x>
@@ -303,32 +303,17 @@ QSlider::handle:horizontal:hover {
            </rect>
           </property>
          </widget>
-         <widget class="QLineEdit" name="doser_txtStatus">
-          <property name="enabled">
-           <bool>false</bool>
-          </property>
+         <widget class="QPushButton" name="dosing_button_palette_check">
           <property name="geometry">
            <rect>
             <x>300</x>
-            <y>40</y>
-            <width>143</width>
-            <height>25</height>
+            <y>140</y>
+            <width>111</width>
+            <height>61</height>
            </rect>
           </property>
-          <property name="styleSheet">
-           <string notr="true">QLineEdit {color: palette(text);}</string>
-          </property>
           <property name="text">
-           <string>Disconnected</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
-          </property>
-          <property name="readOnly">
-           <bool>true</bool>
-          </property>
-          <property name="status" stdset="0">
-           <string/>
+           <string>Палитра</string>
           </property>
          </widget>
         </widget>
@@ -463,6 +448,9 @@ QSlider::handle:horizontal:hover {
          </item>
          <item>
           <widget class="QPushButton" name="cmdFileOpen">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
            <property name="text">
             <string>Open</string>
            </property>
@@ -470,6 +458,9 @@ QSlider::handle:horizontal:hover {
          </item>
          <item>
           <widget class="QPushButton" name="cmdFileReset">
+           <property name="enabled">
+            <bool>true</bool>
+           </property>
            <property name="text">
             <string>Reset</string>
            </property>

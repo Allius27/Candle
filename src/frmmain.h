@@ -89,6 +89,12 @@ class frmMain : public QMainWindow
 {
     Q_OBJECT
 
+    void dosing(QList<QString>& data, int height, bool isPalette);
+    void fill(QList<QString>& data);
+
+    QList<QString> fillPalette11();
+    void fillTable(const QString &arg1);
+
 public:
     explicit frmMain(QWidget *parent = 0);
     ~frmMain();
@@ -101,7 +107,7 @@ private slots:
 
     void onSerialPortReadyRead();
     void onSerialPortCNCError(QSerialPort::SerialPortError);
-    void onSerialPortDoserError(QSerialPort::SerialPortError);
+//    void onSerialPortDoserError(QSerialPort::SerialPortError);
     void onTimerConnection();
     void onTimerStateQuery();
     void onVisualizatorRotationChanged();
@@ -204,7 +210,11 @@ private slots:
 
     void on_cmdStop_clicked();
 
-    void on_dosing_button_inf_start_stop_clicked();
+    void on_dosing_button_cells_check_clicked();
+
+    void on_dosing_button_palette_check_clicked();
+
+    void on_palette_list_activated(const QString &arg1);
 
 protected:
     void showEvent(QShowEvent *se);
@@ -245,7 +255,7 @@ private:
     bool m_settingsLoading;
 
     QSerialPort m_serialPort_cnc;
-    QSerialPort m_serialPort_doser;
+//    QSerialPort m_serialPort_doser;
 
     frmSettings *m_settings;
     frmAbout m_frmAbout;
@@ -268,6 +278,8 @@ private:
     QStringList m_statusCaptions;
     QStringList m_statusBackColors;
     QStringList m_statusForeColors;
+
+    QStringList m_palettes_list;
 
 #ifdef WINDOWS
     QWinTaskbarButton *m_taskBarButton;
