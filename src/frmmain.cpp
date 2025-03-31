@@ -4076,15 +4076,14 @@ void frmMain::on_cmdStop_clicked()
 void frmMain::on_dosing_button_cells_check_clicked()
 {
     sendCommand(QString("G91"));
-    sendCommand(QString("A") + ui->cells_straight->text());
-    sendCommand(QString("A") + QString::number(ui->cells_straight->value() - ui->cells_reverse->value()) );
+    sendCommand(QString("A")  + ui->cells_straight->text());
+    sendCommand(QString("A-") + ui->cells_reverse->text());
 }
 
 void frmMain::on_dosing_button_palette_check_clicked()
 {
     sendCommand(QString("G91"));
     sendCommand(QString("A") + ui->palette_straight->text());
-    sendCommand(QString("A") + QString::number(ui->palette_straight->value() - ui->palette_reverse->value()) );
     sendCommand(QString("A-") + ui->palette_reverse->text());
 }
 
@@ -4101,10 +4100,10 @@ void frmMain::on_palette_list_activated(const QString &arg1)
 
     if (arg1 == "Palette 11")
     {
-        ui->cells_straight->setValue(400);
-        ui->cells_reverse->setValue(500);
-        ui->palette_straight->setValue(600);
-        ui->palette_reverse->setValue(400);
+        ui->cells_straight->setValue(300);
+        ui->cells_reverse->setValue(150);
+        ui->palette_straight->setValue(500);
+        ui->palette_reverse->setValue(300);
     }
 
 
@@ -4240,4 +4239,25 @@ void frmMain::fillTable(const QString &arg1)
         data = fillPalette11();
 
     loadFile(data);
+}
+
+
+void frmMain::on_cells_straight_valueChanged(int arg1)
+{
+    fillTable(ui->palette_list->currentText());
+}
+
+void frmMain::on_cells_reverse_valueChanged(int arg1)
+{
+    fillTable(ui->palette_list->currentText());
+}
+
+void frmMain::on_palette_straight_valueChanged(int arg1)
+{
+    fillTable(ui->palette_list->currentText());
+}
+
+void frmMain::on_palette_reverse_valueChanged(int arg1)
+{
+    fillTable(ui->palette_list->currentText());
 }

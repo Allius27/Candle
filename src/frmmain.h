@@ -216,6 +216,14 @@ private slots:
 
     void on_palette_list_activated(const QString &arg1);
 
+    void on_cells_straight_valueChanged(int arg1);
+
+    void on_cells_reverse_valueChanged(int arg1);
+
+    void on_palette_straight_valueChanged(int arg1);
+
+    void on_palette_reverse_valueChanged(int arg1);
+
 protected:
     void showEvent(QShowEvent *se);
     void hideEvent(QHideEvent *he);
