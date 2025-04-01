@@ -761,7 +761,7 @@ void frmMain::openPort()
             while (m_serialPort_cnc.waitForReadyRead(500))
                 reply += m_serialPort_cnc.readAll();
 
-            if ( reply.contains("Grbl") || reply.contains("MPos") )
+            if ( reply.contains("Grbl") || reply.contains("WPos") )
             {
                 // grbl found
                 break;
@@ -920,7 +920,7 @@ void frmMain::onSerialPortReadyRead()
             m_statusReceived = true;
 
             // Update machine coordinates
-            static QRegExp mpx("MPos:([^,]*),([^,]*),([^,^>^|]*)");
+            static QRegExp mpx("WPos:([^,]*),([^,]*),([^,^>^|]*)");
             if (mpx.indexIn(data) != -1) {
                 ui->txtMPosX->setText(mpx.cap(1));
                 ui->txtMPosY->setText(mpx.cap(2));
@@ -4116,15 +4116,17 @@ void frmMain::dosing(QList<QString>& data, int height, bool isPalette)
 //    m_cnc.moveWithControl(std::nullopt, std::nullopt, 0);
     data.append("Z0");
 
+    QString delay = "G4P" + ui->delay->text();
+
     // TODO
     if ( isPalette )
     {
         // заливаем палитру
 //      m_doser.start(true, straightTime2, reverseTime2, true, 0, 0);
         data.append("A" + ui->palette_straight->text() );
-//        data.append("G4P1" );
+        data.append(delay);
         data.append("A" + QString::number(ui->palette_straight->value() - ui->palette_reverse->value()));
-        data.append("G4P" + ui->delay->text());
+        data.append(delay);
 
     }
     else
@@ -4132,9 +4134,9 @@ void frmMain::dosing(QList<QString>& data, int height, bool isPalette)
         // заливаем ячейки
 //      m_doser.start(true, straightTime1, reverseTime1, true, 0, 0);
         data.append("A" + ui->cells_straight->text() );
-//        data.append("G4P" + ui->delay->text());
+        data.append(delay);
         data.append("A" + QString::number(ui->cells_straight->value() - ui->cells_reverse->value()) );
-        data.append("G4P" + ui->delay->text());
+        data.append(delay);
     }
 
     // поднимаем шприц
@@ -4269,4 +4271,9 @@ void frmMain::on_palette_reverse_valueChanged(int arg1)
 void frmMain::on_delay_valueChanged(int arg1)
 {
     fillTable(ui->palette_list->currentText());
+}
+
+void frmMain::on_cleaning_clicked()
+{
+    sendCommand(QString("$J=G21G91X0Y0Z0A10000F40000"));
 }

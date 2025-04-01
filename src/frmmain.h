@@ -226,6 +226,8 @@ private slots:
 
     void on_delay_valueChanged(int arg1);
 
+    void on_cleaning_clicked();
+
 protected:
     void showEvent(QShowEvent *se);
     void hideEvent(QHideEvent *he);
