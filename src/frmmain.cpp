@@ -301,6 +301,8 @@ frmMain::frmMain(QWidget *parent) :
 
     ui->palette_list->addItems(m_palettes_list);
     on_palette_list_activated(m_palettes_list.front());
+
+    disableUI();
 }
 
 frmMain::~frmMain()
@@ -940,6 +942,8 @@ void frmMain::onSerialPortReadyRead()
                     ui->txtStatus->setText(m_statusCaptions[status]);
                     ui->txtStatus->setStyleSheet(QString("background-color: %1; color: %2;")
                                                  .arg(m_statusBackColors[status]).arg(m_statusForeColors[status]));
+
+                    enableUI();
                 }
 
                 // Update controls
@@ -1445,6 +1449,7 @@ void frmMain::onSerialPortCNCError(QSerialPort::SerialPortError error)
             disconnect(&m_serialPort_cnc, SIGNAL(readyRead()));
 
             updateControlsState();
+            disableUI();
         }
     }
 }
@@ -4245,6 +4250,30 @@ void frmMain::fillTable(const QString &arg1)
         data = fillPalette11();
 
     loadFile(data);
+}
+
+void frmMain::disableUI()
+{
+    ui->dosing_button_cells_check->setEnabled(false);
+    ui->dosing_button_palette_check->setEnabled(false);
+    ui->cleaning->setEnabled(false);
+    ui->cmdFileSend->setEnabled(false);
+    ui->cmdYPlus->setEnabled(false);
+    ui->cmdXPlus->setEnabled(false);
+    ui->cmdYMinus->setEnabled(false);
+    ui->cmdXMinus->setEnabled(false);
+}
+
+void frmMain::enableUI()
+{
+    ui->dosing_button_cells_check->setEnabled(true);
+    ui->dosing_button_palette_check->setEnabled(true);
+    ui->cleaning->setEnabled(true);
+    ui->cmdFileSend->setEnabled(true);
+    ui->cmdYPlus->setEnabled(true);
+    ui->cmdXPlus->setEnabled(true);
+    ui->cmdYMinus->setEnabled(true);
+    ui->cmdXMinus->setEnabled(true);
 }
 
 

@@ -95,6 +95,9 @@ class frmMain : public QMainWindow
     QList<QString> fillPalette11();
     void fillTable(const QString &arg1);
 
+    void disableUI();
+    void enableUI();
+
 public:
     explicit frmMain(QWidget *parent = 0);
     ~frmMain();
