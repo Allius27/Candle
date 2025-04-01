@@ -316,6 +316,22 @@ QSlider::handle:horizontal:hover {
            <string>Палитра</string>
           </property>
          </widget>
+         <widget class="QSpinBox" name="delay">
+          <property name="geometry">
+           <rect>
+            <x>300</x>
+            <y>40</y>
+            <width>111</width>
+            <height>27</height>
+           </rect>
+          </property>
+          <property name="maximum">
+           <number>15000</number>
+          </property>
+          <property name="singleStep">
+           <number>1</number>
+          </property>
+         </widget>
         </widget>
        </item>
        <item>

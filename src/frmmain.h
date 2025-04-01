@@ -224,6 +224,8 @@ private slots:
 
     void on_palette_reverse_valueChanged(int arg1);
 
+    void on_delay_valueChanged(int arg1);
+
 protected:
     void showEvent(QShowEvent *se);
     void hideEvent(QHideEvent *he);
