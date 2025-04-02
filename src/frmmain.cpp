@@ -922,11 +922,12 @@ void frmMain::onSerialPortReadyRead()
             m_statusReceived = true;
 
             // Update machine coordinates
-            static QRegExp mpx("WPos:([^,]*),([^,]*),([^,^>^|]*)");
+            static QRegExp mpx("WPos:([^,]*),([^,]*),([^,]*),([^,^>^|]*)");
             if (mpx.indexIn(data) != -1) {
                 ui->txtMPosX->setText(mpx.cap(1));
                 ui->txtMPosY->setText(mpx.cap(2));
                 ui->txtMPosZ->setText(mpx.cap(3));
+                ui->txtMPosA->setText(mpx.cap(4));
             }
 
             // Status
@@ -1039,8 +1040,8 @@ void frmMain::onSerialPortReadyRead()
             }
 
             // Store work offset
-            static QVector3D workOffset;
-            static QRegExp wpx("WCO:([^,]*),([^,]*),([^,^>^|]*)");
+            static QVector4D workOffset;
+            static QRegExp wpx("WCO:([^,]*),([^,]*),([^,]*),([^,^>^|]*)");
 
             if (wpx.indexIn(data) != -1)
             {
@@ -1052,6 +1053,7 @@ void frmMain::onSerialPortReadyRead()
             ui->txtWPosX->setText(QString::number(ui->txtMPosX->text().toDouble() - workOffset.x(), 'f', prec));
             ui->txtWPosY->setText(QString::number(ui->txtMPosY->text().toDouble() - workOffset.y(), 'f', prec));
             ui->txtWPosZ->setText(QString::number(ui->txtMPosZ->text().toDouble() - workOffset.z(), 'f', prec));
+            ui->txtWPosA->setText(QString::number(ui->txtMPosA->text().toDouble() - workOffset.w(), 'f', prec));
 
             // Update tool position
             QVector3D toolPosition;
@@ -4081,15 +4083,26 @@ void frmMain::on_cmdStop_clicked()
 void frmMain::on_dosing_button_cells_check_clicked()
 {
     sendCommand(QString("G91"));
-    sendCommand(QString("A")  + ui->cells_straight->text());
+
+    QString delay = "G4P" + ui->delay->text();
+
+    sendCommand(QString("A") + ui->cells_straight->text());
+    sendCommand(QString(delay));
     sendCommand(QString("A-") + ui->cells_reverse->text());
+    sendCommand(QString(delay));
+
 }
 
 void frmMain::on_dosing_button_palette_check_clicked()
 {
     sendCommand(QString("G91"));
+
+    QString delay = "G4P" + ui->delay->text();
+
     sendCommand(QString("A") + ui->palette_straight->text());
+    sendCommand(QString(delay));
     sendCommand(QString("A-") + ui->palette_reverse->text());
+    sendCommand(QString(delay));
 }
 
 
@@ -4105,10 +4118,10 @@ void frmMain::on_palette_list_activated(const QString &arg1)
 
     if (arg1 == "Palette 11")
     {
-        ui->cells_straight->setValue(300);
-        ui->cells_reverse->setValue(150);
-        ui->palette_straight->setValue(500);
-        ui->palette_reverse->setValue(300);
+        ui->cells_straight->setValue(100);
+        ui->cells_reverse->setValue(40);
+        ui->palette_straight->setValue(1000);
+        ui->palette_reverse->setValue(800);
     }
 
 
@@ -4123,14 +4136,16 @@ void frmMain::dosing(QList<QString>& data, int height, bool isPalette)
 
     QString delay = "G4P" + ui->delay->text();
 
+    data.append("G91");
+
     // TODO
     if ( isPalette )
     {
         // заливаем палитру
 //      m_doser.start(true, straightTime2, reverseTime2, true, 0, 0);
-        data.append("A" + ui->palette_straight->text() );
+        data.append("A" + ui->palette_straight->text());
         data.append(delay);
-        data.append("A" + QString::number(ui->palette_straight->value() - ui->palette_reverse->value()));
+        data.append("A-" + ui->palette_reverse->text());
         data.append(delay);
 
     }
@@ -4138,11 +4153,13 @@ void frmMain::dosing(QList<QString>& data, int height, bool isPalette)
     {
         // заливаем ячейки
 //      m_doser.start(true, straightTime1, reverseTime1, true, 0, 0);
-        data.append("A" + ui->cells_straight->text() );
+        data.append("A" + ui->cells_straight->text());
         data.append(delay);
-        data.append("A" + QString::number(ui->cells_straight->value() - ui->cells_reverse->value()) );
+        data.append("A-" + ui->cells_reverse->text());
         data.append(delay);
     }
+
+    data.append("G90");
 
     // поднимаем шприц
 //    m_cnc.moveWithControl(std::nullopt, std::nullopt, height);
