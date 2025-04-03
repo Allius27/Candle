@@ -4170,13 +4170,13 @@ QList<QString> frmMain::fillPalette11()
 {
     QList<QString> data;
 
-    int cells_step = 7.5;
+    float cells_step = 7.5;
     int height = 6;
 
     int rows = 2;
     int colomns = 3;
 
-    int offsetX = 54;
+    int offsetX = 53;
     int offsetY = 54;
 
     auto fill = [&](int colomn, int row)
@@ -4197,7 +4197,7 @@ QList<QString> frmMain::fillPalette11()
             {
 
                 // step up
-                int y_value = y_step * cells_step;
+                float y_value = y_step * cells_step;
 
                 if ( x_step % 2 != 0 )
                 {
@@ -4205,8 +4205,8 @@ QList<QString> frmMain::fillPalette11()
                     y_value = (3 - y_step) * cells_step;
                 }
 
-                int x_position = x_step * cells_step + offsetX * colomn;
-                int y_position = y_value + y_col_value;
+                float x_position = x_step * cells_step + offsetX * colomn;
+                float y_position = y_value + y_col_value;
 
 //                m_cnc.move("G0 X" + to_string(x_position) + " Y" + to_string(y_position));
 //                m_cnc.moveWithControl(x_position, y_position, std::nullopt);
@@ -4217,8 +4217,8 @@ QList<QString> frmMain::fillPalette11()
 
         // palette
 
-        int x_position = 28 + offsetX * colomn;
-        int y_position = 11 + y_col_value;
+        float x_position = 28 + offsetX * colomn;
+        float y_position = 11 + y_col_value;
 
 //        m_cnc.move("G0 X" + to_string(28 + offsetX * colomn) + " Y" + to_string(11 + y_col_value));
 //        m_cnc.moveWithControl(28 + offsetX * colomn, 11 + y_col_value, std::nullopt);
