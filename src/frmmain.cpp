@@ -4228,7 +4228,7 @@ QList<QString> frmMain::fillPalette11()
 
     data.append("G90");
     data.append("G49");
-    data.append("X0Y0Z0");
+    data.append("X0Y0Z15");
 //    print()
 
 //    for col in range(0, colomns):
