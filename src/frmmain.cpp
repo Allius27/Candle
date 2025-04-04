@@ -4118,10 +4118,10 @@ void frmMain::on_palette_list_activated(const QString &arg1)
 
     if (arg1 == "Palette 11")
     {
-        ui->cells_straight->setValue(100);
-        ui->cells_reverse->setValue(40);
-        ui->palette_straight->setValue(1000);
-        ui->palette_reverse->setValue(800);
+        ui->cells_straight->setValue(210);
+        ui->cells_reverse->setValue(90);
+        ui->palette_straight->setValue(2000);
+        ui->palette_reverse->setValue(380);
     }
 
 
@@ -4145,8 +4145,31 @@ void frmMain::dosing(QList<QString>& data, int height, bool isPalette)
 //      m_doser.start(true, straightTime2, reverseTime2, true, 0, 0);
         data.append("A" + ui->palette_straight->text());
         data.append(delay);
+
+//        data.append("G1 F1000");
         data.append("A-" + ui->palette_reverse->text());
         data.append(delay);
+//        data.append("G1 F10000");
+
+//        data.append(
+//            QString("$J=G21G91X0Y0Z0A-") +
+//            QString::number(ui->palette_reverse->value()) +
+//            QString("F3000") );
+
+//        int sub_steps = 20;
+
+//        int sub_reverse_value = ui->palette_reverse->value() / sub_steps;
+
+//        int step;
+
+//        data.append("A-" + QString::number(sub_reverse_value*2));
+//        data.append("G4P1");
+
+//        for (int i = 0; i<sub_steps/2; i++ )
+//        {
+//            data.append("A-" + QString::number(sub_reverse_value));
+//            data.append("G4P1");
+//        }
 
     }
     else
